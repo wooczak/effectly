@@ -16,7 +16,7 @@ jobs:
         with:
           ref: ${{ github.ref }}
       - name: 'cat package.json'
-        run: cat ./package.json
+        run: cat ./effectly/package.json
       - name: 'Automated Version Bump'
         id: version-bump
         uses: 'phips28/gh-action-bump-version@master'
@@ -25,7 +25,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'cat package.json'
-        run: cat ./package.json
+        run: cat ./effectly/package.json
       - name: 'Output Step'
         env:
           NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
