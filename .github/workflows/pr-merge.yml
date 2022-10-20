@@ -24,6 +24,7 @@ jobs:
           tag-prefix: 'v'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGEJSON_DIR: 'effectly'
       - name: 'cat package.json'
         run: cat ./effectly/package.json
       - name: 'Output Step'
