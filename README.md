@@ -11,6 +11,10 @@ npm run dev
 ```
 npm test
 ```
+- To update and see the app's Storybook (watch mode)
+```
+yarn runbook
+```
 <br>
 
 ## Contribute to the app (PR workflow)
