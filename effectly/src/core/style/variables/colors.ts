@@ -3,6 +3,12 @@ export const commonColors = {
     green: "#A2EAB6",
     yellow: "#F4EEB9",
     pink: "#F5B8E8",
+    googleButtonBg: {
+        normal: "#4285F4",
+        hover: "#216eed",
+    },
+    appleButtonBg: "#FFF",
+    darkPurple: "#C99EFD",
 };
 
 export const darkColors = {
