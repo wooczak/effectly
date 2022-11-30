@@ -13,6 +13,7 @@ export const SignInBtn = styled.button`
         background: ${(props) => props.theme.appleButtonBg};
 
         & > p { color: black; }
+        & > img { height: 40%; margin-left: 1.25rem; }
     }
 
     height: 4.5rem;
