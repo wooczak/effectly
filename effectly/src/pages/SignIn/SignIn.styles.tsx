@@ -19,8 +19,8 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-block: 1rem;
-  gap: 1rem;
+  margin-top: 1rem;
+  gap: 0.75rem;
 `;
 
 export const OrBlock = styled.div`
@@ -44,6 +44,24 @@ export const Input = styled.input.attrs((props) => ({
   id: props.id,
   required: props.required,
 }))`
-  border-radius: 1rem;
+  height: 4rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.75rem;
+  outline: none;
+  border: 1px solid ${(props) => props.theme.inputBorder.normal};
+  background: ${(props) => props.theme.inputBg};
   width: 100%;
+  transition: all 0.1s ease-in-out;
+  padding-inline: 1rem;
+  font-size: 1.1rem;
+  font-family: inherit;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid ${(props) => props.theme.inputBorder.hover};
+  }
+
+  &:focus {
+    border: 1px solid ${(props) => props.theme.inputBorder.active};
+  }
 `;

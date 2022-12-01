@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import GlobalStyle from "../../core/style/globalStyle";
 import { Header, Wrapper, OrBlock, Input, Form, Label } from "./SignIn.styles";
 import SocialSignIn from "../../components/SignIn/SocialSignIn";
@@ -5,6 +6,8 @@ import GoogleBtnLight from "../../assets/icons/GoogleBtnLight.svg";
 import AppleLogo from "../../assets/icons/AppleLogo.svg";
 
 const SignIn = () => {
+  const onPasswordVisibilityClick = useCallback(() => {}, []);
+
   return (
     <>
       <GlobalStyle />
@@ -25,6 +28,15 @@ const SignIn = () => {
           <Label>
             E-mail
             <Input type="email" id="email" required />
+          </Label>
+          <Label>
+            Password
+            <Input type="password" id="password" required />
+            <PasswordVisibilityIcon
+              src={}
+              alt={`Icon displaying the password is`}
+              onClick={onPasswordVisibilityClick}
+            />
           </Label>
         </Form>
       </Wrapper>
