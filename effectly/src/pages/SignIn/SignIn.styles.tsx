@@ -21,6 +21,7 @@ export const Label = styled.label`
   align-items: flex-start;
   margin-top: 1rem;
   gap: 0.75rem;
+  position: relative;
 `;
 
 export const OrBlock = styled.div`
@@ -64,4 +65,12 @@ export const Input = styled.input.attrs((props) => ({
   &:focus {
     border: 1px solid ${(props) => props.theme.inputBorder.active};
   }
+`;
+
+export const PasswordVisibilityIcon = styled.img`
+  position: absolute;
+  right: 0.5rem;
+  background: none;
+  bottom: 0;
+  height: 4rem;
 `;

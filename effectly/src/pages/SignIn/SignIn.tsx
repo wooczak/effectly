@@ -1,9 +1,18 @@
 import { useCallback } from "react";
 import GlobalStyle from "../../core/style/globalStyle";
-import { Header, Wrapper, OrBlock, Input, Form, Label } from "./SignIn.styles";
+import {
+  Header,
+  Wrapper,
+  OrBlock,
+  Input,
+  Form,
+  Label,
+  PasswordVisibilityIcon,
+} from "./SignIn.styles";
 import SocialSignIn from "../../components/SignIn/SocialSignIn";
 import GoogleBtnLight from "../../assets/icons/GoogleBtnLight.svg";
 import AppleLogo from "../../assets/icons/AppleLogo.svg";
+import ShowPassword from "../../assets/icons/ShowPassword.svg";
 
 const SignIn = () => {
   const onPasswordVisibilityClick = useCallback(() => {}, []);
@@ -33,7 +42,7 @@ const SignIn = () => {
             Password
             <Input type="password" id="password" required />
             <PasswordVisibilityIcon
-              src={}
+              src={ShowPassword}
               alt={`Icon displaying the password is`}
               onClick={onPasswordVisibilityClick}
             />
