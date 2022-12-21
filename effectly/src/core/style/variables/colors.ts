@@ -1,4 +1,5 @@
 export const commonColors = {
+  black: "#000",
   blue: "#A2D2FF",
   green: "#A2EAB6",
   yellow: "#F4EEB9",

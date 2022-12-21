@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 export const SignInBtn = styled.button`
     &:first-of-type {
-        background: ${(props) => props.theme.googleButtonBg.normal};
+        background-color: ${(props) => props.theme.googleButtonBg.normal};
 
         &:hover {
-            background: ${(props) => props.theme.googleButtonBg.hover};
+            background-color: ${(props) => props.theme.googleButtonBg.hover};
         }
     }
 
-    &:last-of-type {
-        background: ${(props) => props.theme.appleButtonBg};
+    &:nth-of-type(2) {
+        background-color: ${(props) => props.theme.appleButtonBg};
 
         & > p { color: black; }
         & > img { height: 40%; margin-left: 1.25rem; }
