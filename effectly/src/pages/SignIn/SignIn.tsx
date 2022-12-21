@@ -13,16 +13,18 @@ import GoogleBtnLight from "../../assets/icons/GoogleBtnLight.svg";
 import AppleLogo from "../../assets/icons/AppleLogo.svg";
 import MailInput from "../../components/SignIn/Inputs/MailInput";
 import PasswordInput from "../../components/SignIn/Inputs/PasswordInput";
+import useCurrentUser from "../../hooks/global/useCurrentUser";
 
 const SignIn = () => {
   const { emailInput, passwordInput, handleFormSubmit } = useEmailSignIn();
+  useCurrentUser();
 
   return (
     <>
       <Wrapper>
         <GlobalStyle />
         <Header>effectly</Header>
-        <Form method="get" onSubmit={handleFormSubmit}>
+        <Form method="get" onSubmit={(e) => handleFormSubmit(e)}>
           <SocialSignIn
             src={GoogleBtnLight}
             altText="Google Logo"
@@ -38,7 +40,7 @@ const SignIn = () => {
           <PasswordInput label="Password" ref={passwordInput} />
           <FlexBlock>
             <p>
-              Not a member? <a>Sign up now</a>
+              Not a member? <a><u>Sign up now</u></a>
             </p>
             <p>Forgot password?</p>
           </FlexBlock>

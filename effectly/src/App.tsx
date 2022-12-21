@@ -1,7 +1,9 @@
+import useCurrentUser from "./hooks/global/useCurrentUser";
+
 const App = () => {
-    return (
-        <p>Main app</p>
-    );
+  useCurrentUser();
+
+  return <p>Main app</p>;
 };
 
 export default App;
