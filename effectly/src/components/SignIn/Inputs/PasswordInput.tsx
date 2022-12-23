@@ -26,6 +26,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, InputProps>(
           required
         />
         <PasswordEye
+          data-testid="password-eye"
           src={!showPassword ? HiddenPasswordIcon : ShownPasswordIcon}
           alt={`An icon displaying that password is ${
             !showPassword ? "hidden" : "shown"
