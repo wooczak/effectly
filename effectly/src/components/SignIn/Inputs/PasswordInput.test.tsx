@@ -1,9 +1,10 @@
 import React from "react";
 import { screen, render, fireEvent } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
-import PasswordInput from "./PasswordInput";
+import { describe, it, expect } from "vitest";
 import { ThemeProvider } from "styled-components";
+
 import { darkTheme } from "../../../core/style/theme/theme";
+import PasswordInput from "./PasswordInput";
 
 type componentProps = {
   label: string;
