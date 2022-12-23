@@ -7,24 +7,22 @@ import {
   FlexBlock,
   LogInBtn,
 } from "./SignIn.styles";
-import useEmailSignIn from "../../hooks/SignIn/useEmailSignIn";
+import useSignIn from "../../hooks/SignIn/useSignIn/useSignIn";
 import SocialSignIn from "../../components/SignIn/SocialSignIn";
 import GoogleBtnLight from "../../assets/icons/GoogleBtnLight.svg";
 import AppleLogo from "../../assets/icons/AppleLogo.svg";
 import MailInput from "../../components/SignIn/Inputs/MailInput";
 import PasswordInput from "../../components/SignIn/Inputs/PasswordInput";
-import useCurrentUser from "../../hooks/global/useCurrentUser";
 
 const SignIn = () => {
-  const { emailInput, passwordInput, handleFormSubmit } = useEmailSignIn();
-  useCurrentUser();
+  const { emailInput, passwordInput, handleEmailFormSubmit } = useSignIn();
 
   return (
     <>
       <Wrapper>
         <GlobalStyle />
         <Header>effectly</Header>
-        <Form method="get" onSubmit={(e) => handleFormSubmit(e)}>
+        <Form method="get" onSubmit={(e) => handleEmailFormSubmit(e)}>
           <SocialSignIn
             src={GoogleBtnLight}
             altText="Google Logo"

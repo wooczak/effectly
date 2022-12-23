@@ -1,9 +1,9 @@
 import useCurrentUser from "./hooks/global/useCurrentUser";
 
 const App = () => {
-  useCurrentUser();
+  const currentUser = useCurrentUser();
 
-  return <p>Main app</p>;
+  return <p>{`Main app, welcome ${currentUser.email}`}</p>;
 };
 
 export default App;
