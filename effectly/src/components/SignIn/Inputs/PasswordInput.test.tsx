@@ -15,10 +15,10 @@ const testProps = {
 };
 
 const renderComponent = ({ label }: componentProps) => {
-  const ref = React.createRef();
+  const ref = React.createRef<HTMLInputElement>();
   render(
     <ThemeProvider theme={darkTheme}>
-      <PasswordInput ref={ref} label={label} />
+      <PasswordInput ref={ref} label={label} testId="" />
     </ThemeProvider>
   );
 };
