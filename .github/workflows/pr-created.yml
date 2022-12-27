@@ -19,7 +19,9 @@ jobs:
         run: cd effectly && yarn && yarn test:unit
 
   cypress-run:
+    name: "Run E2E tests"
     runs-on: ubuntu-latest
+
     steps:
       - name: "Checkout source code"
         uses: "actions/checkout@v2"
@@ -30,5 +32,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
+          working-directory: ./effectly
           install: false
           start: yarn dev
