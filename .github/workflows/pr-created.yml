@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps: 
+      - name: 'cat package.json'
+        run: cat ./effectly/package.json
       - name: 'Checkout source code'
         uses: 'actions/checkout@v2'
         with:
