@@ -1,29 +1,32 @@
-name: 'Unit & E2E tests'
+name: "Unit & E2E tests"
 
 on:
   pull_request:
-    branches: 
-      - 'main'
+    branches:
+      - "main"
 
 jobs:
   unit-test:
-    name: 'Run unit tests'
+    name: "Run unit tests"
     runs-on: ubuntu-latest
 
-    steps: 
-      - name: 'Checkout source code'
-        uses: 'actions/checkout@v2'
+    steps:
+      - name: "Checkout source code"
+        uses: "actions/checkout@v2"
         with:
           ref: ${{ github.ref }}
-      - name: 'Run Jest unit tests'
-        run: cd effectly && yarn test:unit
-  
+      - name: "Run Jest unit tests"
+        run: cd effectly && yarn && yarn test:unit
+
   cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout source code'
-        uses: 'actions/checkout@v2'
+      - name: "Checkout source code"
+        uses: "actions/checkout@v2"
         with:
           ref: ${{ github.ref }}
       - name: Cypress run
         uses: cypress-io/github-action@v5
+        with:
+          install-command: yarn --frozen-lockfile --silent
+          start: yarn dev
