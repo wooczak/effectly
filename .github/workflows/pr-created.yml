@@ -17,7 +17,9 @@ jobs:
           ref: ${{ github.ref }}
       - name: 'cat package.json'
         run: cat ./effectly/package.json
+      - name: 'Install dependencies and run the app'
+        run: cd effectly && yarn && yarn build
       - name: 'Run unit tests'
-        run: cd effectly && yarn && yarn test:unit
+        run: yarn test:unit
       - name: 'Run end-to-end tests'
-        run: cd effectly && yarn && yarn cypress:run
+        run: yarn cypress:run
