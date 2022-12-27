@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "vitest run --coverage",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
@@ -40,6 +41,7 @@
     "@vitejs/plugin-react": "^2.1.0",
     "@vitest/coverage-istanbul": "^0.24.1",
     "babel-loader": "^8.2.5",
+    "cypress": "^12.2.0",
     "jsdom": "^20.0.3",
     "typescript": "^4.6.4",
     "vite": "^3.1.0",

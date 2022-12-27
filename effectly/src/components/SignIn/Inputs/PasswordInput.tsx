@@ -5,6 +5,7 @@ import ShownPasswordIcon from "../../../assets/icons/HidePassword.svg";
 
 type InputProps = {
   label: string;
+  testId: string;
 };
 
 const PasswordInput = React.forwardRef<HTMLInputElement, InputProps>(
@@ -23,6 +24,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, InputProps>(
           type={!showPassword ? "password" : "text"}
           id="password"
           ref={ref}
+          data-cy={props.testId}
           required
         />
         <PasswordEye

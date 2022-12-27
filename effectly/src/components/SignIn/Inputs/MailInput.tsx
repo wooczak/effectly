@@ -3,6 +3,7 @@ import { Input, Label } from "./Inputs.styles";
 
 type InputProps = {
   label: string;
+  testId: string;
 };
 
 const MailInput = React.forwardRef<HTMLInputElement, InputProps>(
@@ -17,6 +18,7 @@ const MailInput = React.forwardRef<HTMLInputElement, InputProps>(
           id="email"
           required
           ref={ref}
+          data-cy={props.testId}
         />
       </>
     );

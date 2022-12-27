@@ -34,15 +34,24 @@ const SignIn = () => {
             text="Sign in with Apple"
           />
           <OrBlock>or</OrBlock>
-          <MailInput label="E-mail" ref={emailInput} />
-          <PasswordInput label="Password" ref={passwordInput} />
+          <MailInput label="E-mail" ref={emailInput} testId="mail-input" />
+          <PasswordInput
+            label="Password"
+            ref={passwordInput}
+            testId="password-input"
+          />
           <FlexBlock>
             <p>
-              Not a member? <a><u>Sign up now</u></a>
+              Not a member?{" "}
+              <a>
+                <u>Sign up now</u>
+              </a>
             </p>
             <p>Forgot password?</p>
           </FlexBlock>
-          <LogInBtn type="submit">Log In</LogInBtn>
+          <LogInBtn type="submit" data-cy="submit-login">
+            Log In
+          </LogInBtn>
         </Form>
       </Wrapper>
     </>
