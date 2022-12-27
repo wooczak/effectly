@@ -20,6 +20,6 @@ jobs:
       - name: 'Install dependencies and run the app'
         run: cd effectly && yarn && yarn build
       - name: 'Run unit tests'
-        run: yarn test:unit
+        run: cd effectly && yarn test:unit
       - name: 'Run end-to-end tests'
-        run: yarn cypress:run
+        run: cd effectly && yarn cypress:run
