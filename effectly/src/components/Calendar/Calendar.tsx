@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { addDays } from "date-fns";
 import useCalendarData from "../../hooks/Calendar/useCalendarData";
 import { CalendarWrapper } from "./Calendar.styles";
 import DatePicker from "./DatePicker/DatePicker";
@@ -9,6 +11,10 @@ type CalendarProps = {
 
 const Calendar = ({ className, userId }: CalendarProps) => {
   const { calData: calendarData } = useCalendarData(userId);
+  const [calendarDay, setCalendarDay] = useState(new Date(Date.now()));
+
+  const incrementDay = () => setCalendarDay(addDays(calendarDay, 1));
+  const decrementDay = () => setCalendarDay(addDays(calendarDay, -1));
 
   const {
     event_name: eventName,
@@ -19,11 +25,15 @@ const Calendar = ({ className, userId }: CalendarProps) => {
 
   return (
     <CalendarWrapper className={className}>
-      {!userId ? (
+      {!calendarData ? (
         "Loading..."
       ) : (
         <>
-          <DatePicker />
+          <DatePicker
+            day={calendarDay}
+            incrementDay={incrementDay}
+            decrementDay={decrementDay}
+          />
         </>
       )}
     </CalendarWrapper>
