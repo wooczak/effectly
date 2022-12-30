@@ -4,7 +4,8 @@ export const AppGrid = styled.section`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  gap: 20px;
+  gap: 1rem;
+  padding: 1rem;
   grid-auto-flow: row;
   grid-template-areas:
     "header header header header header header"
@@ -21,10 +22,14 @@ export const AppGrid = styled.section`
 
   .header {
     grid-area: header;
+    width: 100%;
+    height: 75%;
   }
 
   .calendar {
     grid-area: calendar;
+    width: 100%;
+    height: 100%;
   }
 
   .mail {
