@@ -1,10 +1,9 @@
 import { useEffect } from "react";
-import isSameDay from "date-fns/isSameDay";
 import useCalendarData from "../../hooks/Calendar/useCalendarData";
 import { CalendarWrapper } from "./Calendar.styles";
 import DatePicker from "./DatePicker/DatePicker";
 import useDatePick from "../../hooks/Calendar/useDatePick";
-import { fromUnixTime } from "date-fns";
+import useFilteredEvents from "../../hooks/Calendar/useFilteredEvents";
 
 type CalendarProps = {
   className: string;
@@ -13,17 +12,8 @@ type CalendarProps = {
 
 const Calendar = ({ className, userId }: CalendarProps) => {
   const { calData: calendarData } = useCalendarData(userId);
-  const { calendarDay, incrementDay, decrementDay } = useDatePick();
-
-  const {
-    event_name: eventName,
-    event_location: eventLocation,
-    event_start: eventStart,
-    event_end: eventEnd,
-  } = calendarData || {};
-
-  const currentEventStart = fromUnixTime(eventStart?.seconds);
-  const currentCalendarDay = calendarDay;
+  const { calendarDay: visibleDay, incrementDay, decrementDay } = useDatePick();
+  const { filteredEvents } = useFilteredEvents(calendarData, visibleDay);
 
   return (
     <CalendarWrapper className={className}>
@@ -32,10 +22,11 @@ const Calendar = ({ className, userId }: CalendarProps) => {
       ) : (
         <>
           <DatePicker
-            day={calendarDay}
+            day={visibleDay}
             incrementDay={incrementDay}
             decrementDay={decrementDay}
           />
+          {filteredEvents.map(event => <div>{event.event_name}</div>)}
         </>
       )}
     </CalendarWrapper>
