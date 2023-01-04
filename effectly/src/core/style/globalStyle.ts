@@ -39,8 +39,14 @@ const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
         box-sizing: border-box;
         font-family: Creato Display, Helvetica, sans-serif;
         background-color: ${(props) => props.theme.bgPrimary};
-        color: ${(props) => props.theme.text}
+        color: ${(props) => props.theme.text};
+        margin: auto;
     };
+
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.3rem; }
+    p { font-size: 1rem; }
 
 `;
 

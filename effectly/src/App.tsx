@@ -1,15 +1,15 @@
-import GlobalStyle from "./core/style/globalStyle";
-import { ThemeProvider } from "styled-components";
-import { darkTheme } from "./core/style/theme/theme";
-import SignIn from "./pages/SignIn/SignIn";
+import { auth } from "./firebase/firebase";
+import useCurrentUser from "./hooks/global/useCurrentUser";
 
 const App = () => {
-    return (
-        <ThemeProvider theme={darkTheme}>
-            <GlobalStyle />
-            <SignIn />
-        </ThemeProvider>
-    );
+  const currentUser = useCurrentUser();
+
+  return (
+    <>
+      <p>{`Main app, welcome ${currentUser?.uid}`}</p>
+      <button onClick={() => auth.signOut()}>Sign out</button>
+    </>
+  );
 };
 
 export default App;

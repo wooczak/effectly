@@ -25,3 +25,7 @@ dist-ssr
 
 # Coverage folder
 coverage
+
+# Cypress folders
+cypress/support
+cypress/videos

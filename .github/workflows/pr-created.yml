@@ -1,0 +1,37 @@
+name: "Unit & E2E tests"
+
+on:
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  unit-test:
+    name: "Run unit tests"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout source code"
+        uses: "actions/checkout@v2"
+        with:
+          ref: ${{ github.ref }}
+      - name: "Run Jest unit tests"
+        run: cd effectly && yarn && yarn test:unit
+
+  cypress-run:
+    name: "Run E2E tests"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout source code"
+        uses: "actions/checkout@v2"
+        with:
+          ref: ${{ github.ref }}
+      - name: Install the app
+        run: cd effectly && yarn
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          working-directory: ./effectly
+          install: false
+          start: yarn dev
