@@ -5,11 +5,11 @@
 ## Run and test app locally
 - To run the app locally on your local host
 ```
-npm run dev
+yarn dev
 ```
 - To test the app's files and create coverage folder (running on Vitest + Istanbul)
 ```
-npm test
+yarn test
 ```
 - To update and see the app's Storybook (watch mode)
 ```
