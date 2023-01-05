@@ -4,7 +4,7 @@ type EventDateType = {
   seconds: number;
 };
 
-const useFilteredEvents = (calendarData: any[], calendarDay: Date) => {
+export const filterEvents = (calendarData: any[], calendarDay: Date) => {
   const filterByGivenDate = (givenDate: Date, eventDate: EventDateType) => {
     // Convert given dates to the same format
     const eventDateFormatted = fromUnixTime(eventDate.seconds);
@@ -23,4 +23,13 @@ const useFilteredEvents = (calendarData: any[], calendarDay: Date) => {
   return { filteredEvents };
 };
 
-export default useFilteredEvents;
+// Return events' dates converted from timestamps to a proper date
+export const convertDate = (timestamp: EventDateType) => {
+  const UTCFormat = fromUnixTime(timestamp.seconds);
+  const toLocaleDateString = UTCFormat.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return toLocaleDateString;
+};

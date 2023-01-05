@@ -1,9 +1,10 @@
-import { useEffect } from "react";
-import useCalendarData from "../../hooks/Calendar/useCalendarData";
-import { CalendarWrapper } from "./Calendar.styles";
+import { CalendarWrapper, CalendarRows } from "./Calendar.styles";
 import DatePicker from "./DatePicker/DatePicker";
+import Event from "./Event/Event";
+import useCalendarData from "../../hooks/Calendar/useCalendarData";
 import useDatePick from "../../hooks/Calendar/useDatePick";
-import useFilteredEvents from "../../hooks/Calendar/useFilteredEvents";
+import { filterEvents, convertDate } from "./helpers/filterEvents";
+import getRandomColor from "./helpers/getRandomColor";
 
 type CalendarProps = {
   className: string;
@@ -13,7 +14,9 @@ type CalendarProps = {
 const Calendar = ({ className, userId }: CalendarProps) => {
   const { calData: calendarData } = useCalendarData(userId);
   const { calendarDay: visibleDay, incrementDay, decrementDay } = useDatePick();
-  const { filteredEvents } = useFilteredEvents(calendarData, visibleDay);
+
+  const { filteredEvents } = filterEvents(calendarData, visibleDay);
+  const backgroundColor = getRandomColor();
 
   return (
     <CalendarWrapper className={className}>
@@ -26,7 +29,26 @@ const Calendar = ({ className, userId }: CalendarProps) => {
             incrementDay={incrementDay}
             decrementDay={decrementDay}
           />
-          {filteredEvents.map(event => <div>{event.event_name}</div>)}
+          <CalendarRows>
+            {filteredEvents.map((event) => {
+              const {
+                event_start: start,
+                event_end: end,
+                event_name: name,
+                event_location: location,
+              } = event;
+
+              return (
+                <Event
+                  name={name}
+                  start={convertDate(start)}
+                  end={convertDate(end)}
+                  location={location}
+                  backgroundColor={backgroundColor}
+                />
+              );
+            })}
+          </CalendarRows>
         </>
       )}
     </CalendarWrapper>
