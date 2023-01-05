@@ -1,10 +1,11 @@
-import { CalendarWrapper, CalendarRows } from "./Calendar.styles";
+import { CalendarWrapper, EventsRows } from "./Calendar.styles";
 import DatePicker from "./DatePicker/DatePicker";
 import Event from "./Event/Event";
 import useCalendarData from "../../hooks/Calendar/useCalendarData";
 import useDatePick from "../../hooks/Calendar/useDatePick";
 import { filterEvents, convertDate } from "./helpers/filterEvents";
 import getRandomColor from "./helpers/getRandomColor";
+import GlobalStyle from "../../core/style/globalStyle";
 
 type CalendarProps = {
   className: string;
@@ -16,7 +17,6 @@ const Calendar = ({ className, userId }: CalendarProps) => {
   const { calendarDay: visibleDay, incrementDay, decrementDay } = useDatePick();
 
   const { filteredEvents } = filterEvents(calendarData, visibleDay);
-  const backgroundColor = getRandomColor();
 
   return (
     <CalendarWrapper className={className}>
@@ -29,7 +29,8 @@ const Calendar = ({ className, userId }: CalendarProps) => {
             incrementDay={incrementDay}
             decrementDay={decrementDay}
           />
-          <CalendarRows>
+          <GlobalStyle />
+          <EventsRows>
             {filteredEvents.map((event) => {
               const {
                 event_start: start,
@@ -44,11 +45,11 @@ const Calendar = ({ className, userId }: CalendarProps) => {
                   start={convertDate(start)}
                   end={convertDate(end)}
                   location={location}
-                  backgroundColor={backgroundColor}
+                  backgroundColor={getRandomColor()}
                 />
               );
             })}
-          </CalendarRows>
+          </EventsRows>
         </>
       )}
     </CalendarWrapper>

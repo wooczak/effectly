@@ -7,7 +7,7 @@ export const Wrapper = styled.section`
 
 export const Header = styled.h1`
   font-size: 4rem;
-  font-weight: 800;
+  font-weight: 600;
   margin-bottom: 2rem;
 `;
 

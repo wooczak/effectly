@@ -8,13 +8,9 @@ export const CalendarWrapper = styled.article`
   overflow-y: scroll;
 `;
 
-export const CalendarRows = styled.div`
+export const EventsRows = styled.div`
   background-color: transparent;
   margin-block: 1rem;
-  display: grid;
-  grid-template-columns: 20% 80%;
-  grid-template-rows: auto;
-  gap: 1rem;
   max-height: 100%:
   overflow-y: scroll;
 `;
