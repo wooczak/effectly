@@ -14,7 +14,7 @@ type CalendarProps = {
 
 const Calendar = ({ className, userId }: CalendarProps) => {
   const { calData: calendarData } = useCalendarData(userId);
-  const { calendarDay: visibleDay, incrementDay, decrementDay } = useDatePick();
+  const { calendarDay: visibleDay, weekDayString: weekDay, incrementDay, decrementDay } = useDatePick();
 
   const { filteredEvents } = filterEvents(calendarData, visibleDay);
 
@@ -26,6 +26,7 @@ const Calendar = ({ className, userId }: CalendarProps) => {
         <>
           <DatePicker
             day={visibleDay}
+            weekDay={weekDay}
             incrementDay={incrementDay}
             decrementDay={decrementDay}
           />

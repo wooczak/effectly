@@ -1,5 +1,15 @@
-import { addDays } from "date-fns";
+import { addDays, getDay } from "date-fns";
 import { useState } from "react";
+
+enum Days {
+  Sunday,
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+}
 
 const useDatePick = () => {
   const [calendarDay, setCalendarDay] = useState(new Date(Date.now()));
@@ -7,7 +17,9 @@ const useDatePick = () => {
   const incrementDay = () => setCalendarDay(addDays(calendarDay, 1));
   const decrementDay = () => setCalendarDay(addDays(calendarDay, -1));
 
-  return { calendarDay, incrementDay, decrementDay };
+  const weekDayString = Days[getDay(calendarDay)];
+
+  return { calendarDay, weekDayString, incrementDay, decrementDay };
 };
 
 export default useDatePick;
