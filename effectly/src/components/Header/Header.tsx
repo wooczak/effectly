@@ -1,4 +1,4 @@
-import { HeaderWrapper, Logo } from "./Header.styles";
+import { HeaderWrapper, Logo, LogOutBtn } from "./Header.styles";
 import { auth } from "../../firebase/firebase";
 
 interface HeaderProps {
@@ -6,10 +6,12 @@ interface HeaderProps {
 }
 
 const Header = ({ className }: HeaderProps) => {
+  const signOut = () => auth.signOut();
+
   return (
     <HeaderWrapper className={className}>
       <Logo>effectly</Logo>
-      <button onClick={() => auth.signOut()}>sign out</button>
+      <LogOutBtn onClick={signOut}>Log out</LogOutBtn>
     </HeaderWrapper>
   );
 };

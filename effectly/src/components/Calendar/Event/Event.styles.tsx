@@ -1,28 +1,26 @@
 import styled from "styled-components";
 
 export const EventWrapper = styled.div`
-  display: inline-flex;
+  display: flex;
   justify-content: flex-start;
+  align-items: center;
   gap: 1rem;
   background-color: transparent;
-  width: auto;
-  margin-block: 0.5rem;
+  margin-block: 0.9rem;
 `;
 
 export const Date = styled.div`
   background-color: transparent;
-  width: 4ch;
+  width: 5ch;
 `;
 
 export const EventInfo = styled.div.attrs((props) => ({
   backgroundColor: props.backgroundColor,
 }))`
-  width: auto;
-  background-color: transparent;
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.theme.black};
   padding: 0.75rem;
-  flex-grow: 2;
+  line-height: 0;
 
   & > p {
     background-color: inherit;

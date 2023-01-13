@@ -1,12 +1,25 @@
+import React from "react";
 import { EventWrapper, Date, EventInfo } from "./Event.styles";
 
 interface EventProps {
-  [index: string]: string;
+  index: any;
+  name: string;
+  location: string;
+  start: string;
+  end: string;
+  backgroundColor: string;
 }
 
-const Event = ({ name, location, start, end, backgroundColor }: EventProps) => {
+const Event = ({
+  index,
+  name,
+  location,
+  start,
+  end,
+  backgroundColor,
+}: EventProps) => {
   return (
-    <>
+    <React.Fragment key={index}>
       <EventWrapper>
         <Date>{`${start}-${end}`}</Date>
         <EventInfo backgroundColor={backgroundColor}>
@@ -14,7 +27,7 @@ const Event = ({ name, location, start, end, backgroundColor }: EventProps) => {
           <p className="event-location">{location}</p>
         </EventInfo>
       </EventWrapper>
-    </>
+    </React.Fragment>
   );
 };
 

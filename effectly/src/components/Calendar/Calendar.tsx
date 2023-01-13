@@ -5,7 +5,6 @@ import useCalendarData from "../../hooks/Calendar/useCalendarData";
 import useDatePick from "../../hooks/Calendar/useDatePick";
 import { filterEvents, convertDate } from "./helpers/filterEvents";
 import getRandomColor from "./helpers/getRandomColor";
-import GlobalStyle from "../../core/style/globalStyle";
 
 type CalendarProps = {
   className: string;
@@ -30,9 +29,8 @@ const Calendar = ({ className, userId }: CalendarProps) => {
             incrementDay={incrementDay}
             decrementDay={decrementDay}
           />
-          <GlobalStyle />
           <EventsRows>
-            {filteredEvents.map((event) => {
+            {filteredEvents.map((event, index) => {
               const {
                 event_start: start,
                 event_end: end,
@@ -42,6 +40,7 @@ const Calendar = ({ className, userId }: CalendarProps) => {
 
               return (
                 <Event
+                  index={index}
                   name={name}
                   start={convertDate(start)}
                   end={convertDate(end)}

@@ -20,7 +20,6 @@ const SignIn = () => {
   return (
     <>
       <Wrapper>
-        <GlobalStyle />
         <Header>effectly</Header>
         <Form method="get" onSubmit={(e) => handleEmailFormSubmit(e)}>
           <SocialSignIn

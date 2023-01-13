@@ -10,7 +10,5 @@ export const CalendarWrapper = styled.article`
 
 export const EventsRows = styled.div`
   background-color: transparent;
-  margin-block: 1rem;
-  max-height: 100%:
-  overflow-y: scroll;
+  margin-block: 2rem;
 `;
