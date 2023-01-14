@@ -1,6 +1,7 @@
 import { commonColors, darkColors, lightColors } from "../variables/colors";
 
 export interface themeDefaultElements {
+    name: string,
     bgPrimary: string;
     bgSecondary: string;
     accent: string;
@@ -8,6 +9,7 @@ export interface themeDefaultElements {
 }
 
 export const darkTheme: themeDefaultElements = {
+    name: 'darkTheme',
     bgPrimary: darkColors.bgPrimary,
     bgSecondary: darkColors.bgSecondary,
     accent: darkColors.accent,
@@ -16,6 +18,7 @@ export const darkTheme: themeDefaultElements = {
 };
 
 export const lightTheme: themeDefaultElements = {
+    name: 'lightTheme',
     bgPrimary: lightColors.bgPrimary,
     bgSecondary: lightColors.bgSecondary,
     accent: lightColors.accent,
