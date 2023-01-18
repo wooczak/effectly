@@ -6,7 +6,7 @@ import { Theme, ThemeRootState } from "./types";
 export const themeSlice = createSlice({
   name: "theme",
   initialState: {
-    theme: lightTheme,
+    theme: darkTheme,
   },
   reducers: {
     toggleDarkTheme: (state) => {
