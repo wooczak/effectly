@@ -20,13 +20,7 @@ export const filterEvents = (calendarData: any[], calendarDay: Date) => {
     filterByGivenDate(calendarDay, event.event_start)
   );
 
-  // Return filtered events as sorted by their start time
-  const sortedAndFilteredEvents = filteredEvents.sort(
-    (prevEvent, nextEvent) =>
-      prevEvent.event_start.seconds - nextEvent.event_start.seconds
-  );
-
-  return { sortedAndFilteredEvents };
+  return { filteredEvents };
 };
 
 // Return events' dates converted from timestamps to a proper date
