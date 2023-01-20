@@ -6,7 +6,7 @@ import {
   ButtonsWrapper,
   Toggle,
 } from "./Header.styles";
-import { auth } from "../../core/firebase/firebase";
+import { auth } from "../../firebase/firebase";
 import { useDispatch } from "react-redux";
 import {
   toggleDarkTheme,

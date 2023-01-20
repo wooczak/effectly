@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { database } from "../../core/firebase/firebase";
+import { database } from "../../firebase/firebase";
 
 const useCalendarData = (userId: string) => {
   const [calData, setCalData] = useState<any[]>([]);

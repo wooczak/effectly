@@ -1,5 +1,5 @@
 import { FormEvent, useReducer, useRef } from "react";
-import { auth } from "../../../core/firebase/firebase";
+import { auth } from "../../../firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import useCurrentUser from "../../global/useCurrentUser";
 import { inputActions } from "./types";
