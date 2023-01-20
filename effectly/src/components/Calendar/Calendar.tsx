@@ -15,7 +15,7 @@ const Calendar = ({ className, userId }: CalendarProps) => {
   const { calData: calendarData } = useCalendarData(userId);
   const { calendarDay: visibleDay, weekDayString: weekDay, incrementDay, decrementDay } = useDatePick();
 
-  const { filteredEvents } = filterEvents(calendarData, visibleDay);
+  const { sortedAndFilteredEvents: events } = filterEvents(calendarData, visibleDay);
 
   return (
     <CalendarWrapper className={className}>
@@ -30,7 +30,7 @@ const Calendar = ({ className, userId }: CalendarProps) => {
             decrementDay={decrementDay}
           />
           <EventsRows>
-            {filteredEvents.map((event, index) => {
+            {events.map((event, index) => {
               const {
                 event_start: start,
                 event_end: end,
