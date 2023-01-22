@@ -20,10 +20,12 @@ export const Date = styled.div`
 
 export const EventInfo = styled.div.attrs((props) => ({
   backgroundColor: props.backgroundColor,
+  duration: props.duration,
 }))`
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.theme.black};
-  padding: 0.75rem;
+  padding-inline: 0.75rem;
+  padding-block: calc(0.75rem + ${(props) => props.duration});
   line-height: 0;
 
   & > p {

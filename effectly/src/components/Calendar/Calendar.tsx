@@ -6,7 +6,7 @@ import Event from "./Event/Event";
 import useCalendarData from "../../hooks/Calendar/useCalendarData";
 import useDatePick from "../../hooks/Calendar/useDatePick";
 
-import { convertDate, filterEvents } from "./helpers/filterEvents";
+import { convertDate, filterEvents, getEventsMath } from "./helpers/events";
 import getRandomColor from "./helpers/getRandomColor";
 
 type CalendarProps = {
@@ -23,7 +23,7 @@ const Calendar = ({ className, userId }: CalendarProps) => {
     decrementDay,
   } = useDatePick();
 
-  const { sortedAndFilteredEvents: events, getEventsMath } = filterEvents(
+  const { sortedAndFilteredEvents: events } = filterEvents(
     calendarData,
     visibleDay
   );

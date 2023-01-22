@@ -22,14 +22,14 @@ const Event = ({
   duration,
   backgroundColor,
 }: EventProps) => {
-
-
-
   return (
     <React.Fragment key={index}>
       <EventWrapper fromMidnight={`${fromMidnight / 5}px`}>
         <Date>{`${start} - ${end}`}</Date>
-        <EventInfo backgroundColor={backgroundColor}>
+        <EventInfo
+          backgroundColor={backgroundColor}
+          duration={`${duration / 7.5}px`}
+        >
           <p className="event-name">{name}</p>
           <p className="event-location">{location}</p>
         </EventInfo>
