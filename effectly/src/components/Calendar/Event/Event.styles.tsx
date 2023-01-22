@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
-export const EventWrapper = styled.div`
+export const EventWrapper = styled.div.attrs((props) => ({
+  fromMidnight: props.fromMidnight,
+}))`
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
   background-color: transparent;
   margin-block: 0.9rem;
+  position: relative;
+  top: ${(props) => props.fromMidnight};
 `;
 
 export const Date = styled.div`

@@ -8,6 +8,8 @@ interface EventProps {
   start: string;
   end: string;
   backgroundColor: string;
+  fromMidnight: number;
+  duration: number;
 }
 
 const Event = ({
@@ -16,12 +18,17 @@ const Event = ({
   location,
   start,
   end,
+  fromMidnight,
+  duration,
   backgroundColor,
 }: EventProps) => {
+
+
+
   return (
     <React.Fragment key={index}>
-      <EventWrapper>
-        <Date>{`${start}-${end}`}</Date>
+      <EventWrapper fromMidnight={`${fromMidnight / 5}px`}>
+        <Date>{`${start} - ${end}`}</Date>
         <EventInfo backgroundColor={backgroundColor}>
           <p className="event-name">{name}</p>
           <p className="event-location">{location}</p>

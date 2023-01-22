@@ -12,3 +12,13 @@ export const EventsRows = styled.div`
   background-color: transparent;
   margin-block: 2rem;
 `;
+
+export const NoEventsInfo = styled.div`
+  background-color: transparent;
+  margin-top: 2rem;
+
+  & > p {
+    background-color: transparent;
+    text-align: center;
+  }
+`;

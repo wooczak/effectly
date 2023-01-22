@@ -7,12 +7,10 @@ const App = () => {
   const currentUser = useCurrentUser();
 
   return (
-    <>
-      <AppGrid>
-        <Header className="header" />
-        <Calendar className="calendar" userId={currentUser?.uid} />
-      </AppGrid>
-    </>
+    <AppGrid>
+      <Header className="header" />
+      <Calendar className="calendar" userId={currentUser?.uid} />
+    </AppGrid>
   );
 };
 

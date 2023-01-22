@@ -1,9 +1,12 @@
-import { CalendarWrapper, EventsRows } from "./Calendar.styles";
+import { CalendarWrapper, EventsRows, NoEventsInfo } from "./Calendar.styles";
+
 import DatePicker from "./DatePicker/DatePicker";
 import Event from "./Event/Event";
+
 import useCalendarData from "../../hooks/Calendar/useCalendarData";
 import useDatePick from "../../hooks/Calendar/useDatePick";
-import { filterEvents, convertDate } from "./helpers/filterEvents";
+
+import { convertDate, filterEvents } from "./helpers/filterEvents";
 import getRandomColor from "./helpers/getRandomColor";
 
 type CalendarProps = {
@@ -13,9 +16,19 @@ type CalendarProps = {
 
 const Calendar = ({ className, userId }: CalendarProps) => {
   const { calData: calendarData } = useCalendarData(userId);
-  const { calendarDay: visibleDay, weekDayString: weekDay, incrementDay, decrementDay } = useDatePick();
+  const {
+    calendarDay: visibleDay,
+    weekDayString: weekDay,
+    incrementDay,
+    decrementDay,
+  } = useDatePick();
 
-  const { sortedAndFilteredEvents: events } = filterEvents(calendarData, visibleDay);
+  const { sortedAndFilteredEvents: events, getEventsMath } = filterEvents(
+    calendarData,
+    visibleDay
+  );
+
+  const eventsFetched = events.length !== 0;
 
   return (
     <CalendarWrapper className={className}>
@@ -29,27 +42,40 @@ const Calendar = ({ className, userId }: CalendarProps) => {
             incrementDay={incrementDay}
             decrementDay={decrementDay}
           />
-          <EventsRows>
-            {events.map((event, index) => {
-              const {
-                event_start: start,
-                event_end: end,
-                event_name: name,
-                event_location: location,
-              } = event;
+          {!eventsFetched ? (
+            <NoEventsInfo>
+              <p>Oops. No events added yet!</p>
+            </NoEventsInfo>
+          ) : (
+            <EventsRows>
+              {events.map((event, index) => {
+                const {
+                  event_start: start,
+                  event_end: end,
+                  event_name: name,
+                  event_location: location,
+                } = event;
 
-              return (
-                <Event
-                  index={index}
-                  name={name}
-                  start={convertDate(start)}
-                  end={convertDate(end)}
-                  location={location}
-                  backgroundColor={getRandomColor()}
-                />
-              );
-            })}
-          </EventsRows>
+                const {
+                  intervalInMinutes: fromMidnight,
+                  durationInMinutes: duration,
+                } = getEventsMath(visibleDay, start, end);
+
+                return (
+                  <Event
+                    index={index}
+                    name={name}
+                    start={convertDate(start)}
+                    end={convertDate(end)}
+                    location={location}
+                    fromMidnight={fromMidnight}
+                    duration={duration}
+                    backgroundColor={getRandomColor()}
+                  />
+                );
+              })}
+            </EventsRows>
+          )}
         </>
       )}
     </CalendarWrapper>
