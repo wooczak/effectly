@@ -32,6 +32,8 @@ export const filterEvents = (calendarData: any[], calendarDay: Date) => {
       prevEvent.event_start.seconds - nextEvent.event_start.seconds
   );
 
+  console.log(calendarData, calendarDay);
+
   return { sortedAndFilteredEvents };
 };
 
