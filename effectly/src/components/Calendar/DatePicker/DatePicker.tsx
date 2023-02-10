@@ -5,22 +5,35 @@ import ArrowRightIcon from "../../../assets/icons/ArrowRight.svg";
 
 interface DatePickerTypes {
   day: Date;
-  weekDay: String,
+  weekDay: String;
   incrementDay: () => void;
   decrementDay: () => void;
 }
 
-const DatePicker = ({ day, weekDay, incrementDay, decrementDay }: DatePickerTypes) => {
-  const dayString = day.toLocaleDateString("en-US", {
+const DatePicker = ({
+  day,
+  weekDay,
+  incrementDay,
+  decrementDay,
+}: DatePickerTypes) => {
+  const dayString = day?.toLocaleDateString("en-US", {
     day: "numeric",
     month: "short",
   });
 
   return (
-    <DatePickerWrapper>
-      <Arrow onClick={decrementDay} src={ArrowLeftIcon} />
-      {`${isToday(day) ? 'Today, ' : ''}${`${weekDay}, `}${dayString}`}
-      <Arrow onClick={incrementDay} src={ArrowRightIcon} />
+    <DatePickerWrapper data-testid="date-picker-wrapper">
+      <Arrow
+        onClick={decrementDay}
+        src={ArrowLeftIcon}
+        data-testid="decrement-day-arrow"
+      />
+      {`${isToday(day) ? "Today, " : ""}${`${weekDay}, `}${dayString}`}
+      <Arrow
+        onClick={incrementDay}
+        src={ArrowRightIcon}
+        data-testid="increment-day-arrow"
+      />
     </DatePickerWrapper>
   );
 };

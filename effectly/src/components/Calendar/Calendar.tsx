@@ -12,6 +12,7 @@ import getRandomColor from "./helpers/getRandomColor";
 type CalendarProps = {
   className: string;
   userId: string;
+  children?: React.ReactNode;
 };
 
 const Calendar = ({ className, userId }: CalendarProps) => {
