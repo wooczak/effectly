@@ -1,3 +1,5 @@
+import { useCallback, useMemo } from "react";
+
 import {
   fromUnixTime,
   isSameDay,
@@ -11,28 +13,37 @@ type EventDateType = {
 };
 
 export const filterEvents = (calendarData: any[], calendarDay: Date) => {
-  const filterByGivenDate = (givenDate: Date, eventDate: EventDateType) => {
-    // Convert given dates to the same format
-    const eventDateFormatted = fromUnixTime(eventDate.seconds);
+  const filterByGivenDate = useCallback(
+    (givenDate: Date, eventDate: EventDateType) => {
+      // Convert given dates to the same format
+      const eventDateFormatted = fromUnixTime(eventDate.seconds);
 
-    // Compare if the given date is the sam day as the event
-    const areDaysEqual = isSameDay(givenDate, eventDateFormatted);
+      // Compare if the given date is the sam day as the event
+      const areDaysEqual = isSameDay(givenDate, eventDateFormatted);
 
-    return areDaysEqual;
-  };
+      return areDaysEqual;
+    },
+    [calendarData, calendarDay]
+  );
 
   // Return events that contain the current visible on the calendar
-  const filteredEvents = calendarData.filter((event) =>
-    filterByGivenDate(calendarDay, event.event_start)
+  const filteredEvents = useMemo(
+    () =>
+      calendarData.filter((event) =>
+        filterByGivenDate(calendarDay, event.event_start)
+      ),
+    [filterByGivenDate, calendarData, calendarDay]
   );
 
   // Return filtered events as sorted by their start time
-  const sortedAndFilteredEvents = filteredEvents.sort(
-    (prevEvent, nextEvent) =>
-      prevEvent.event_start.seconds - nextEvent.event_start.seconds
+  const sortedAndFilteredEvents = useMemo(
+    () =>
+      filteredEvents.sort(
+        (prevEvent, nextEvent) =>
+          prevEvent.event_start.seconds - nextEvent.event_start.seconds
+      ),
+    [filteredEvents]
   );
-
-  console.log(calendarData, calendarDay);
 
   return { sortedAndFilteredEvents };
 };
