@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { database } from "../../core/firebase/firebase";
+import { getDocs, query } from "firebase/firestore";
+import { queryCalendarData } from "../../core/firebase/queries";
 
 const useCalendarData = (userId: string) => {
   const [calData, setCalData] = useState<any[]>([]);
 
   const setCalendarData = async () => {
-    const dataQuery = collection(database, "users", `${userId}`, "calendar");
+    const dataQuery = queryCalendarData(userId);
     const dataSnapshot = await getDocs(dataQuery);
 
     dataSnapshot.forEach((doc) => {
