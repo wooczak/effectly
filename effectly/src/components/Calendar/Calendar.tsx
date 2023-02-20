@@ -6,8 +6,10 @@ import Event from "./Event/Event";
 import useCalendarData from "../../hooks/Calendar/useCalendarData";
 import useDatePick from "../../hooks/Calendar/useDatePick";
 
+import { Calendar as CalendarVars } from "../../core/variables/variables";
 import { convertDate, filterEvents, getEventsMath } from "./helpers/events";
 import getRandomColor from "./helpers/getRandomColor";
+import { Globals } from "../../core/variables/variables";
 
 type CalendarProps = {
   className: string;
@@ -34,7 +36,7 @@ const Calendar = ({ className, userId }: CalendarProps) => {
   return (
     <CalendarWrapper className={className}>
       {!calendarData ? (
-        "Loading..."
+        Globals.LOADING
       ) : (
         <>
           <DatePicker
@@ -45,7 +47,7 @@ const Calendar = ({ className, userId }: CalendarProps) => {
           />
           {!eventsFetched ? (
             <NoEventsInfo>
-              <p>Oops. No events added yet!</p>
+              <p>{CalendarVars.NO_EVENTS_ADDED}</p>
             </NoEventsInfo>
           ) : (
             <EventsRows>

@@ -1,5 +1,6 @@
 import { HeaderWrapper, Logo, LogOutBtn } from "./Header.styles";
 import { auth } from "../../core/firebase/firebase";
+import { Globals } from "../../core/variables/variables";
 
 interface HeaderProps {
   className: string;
@@ -10,8 +11,8 @@ const Header = ({ className }: HeaderProps) => {
 
   return (
     <HeaderWrapper className={className}>
-      <Logo>effectly</Logo>
-      <LogOutBtn onClick={signOut}>Log out</LogOutBtn>
+      <Logo>{Globals.EFFECTLY}</Logo>
+      <LogOutBtn onClick={signOut}>{Globals.LOG_OUT}</LogOutBtn>
     </HeaderWrapper>
   );
 };
