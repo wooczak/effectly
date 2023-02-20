@@ -1,14 +1,16 @@
-import { auth } from "./firebase/firebase";
+import { AppGrid } from "./App.styles";
+import Calendar from "./components/Calendar/Calendar";
+import Header from "./components/Header/Header";
 import useCurrentUser from "./hooks/global/useCurrentUser";
 
 const App = () => {
   const currentUser = useCurrentUser();
 
   return (
-    <>
-      <p>{`Main app, welcome ${currentUser?.uid}`}</p>
-      <button onClick={() => auth.signOut()}>Sign out</button>
-    </>
+    <AppGrid>
+      <Header className="header" />
+      <Calendar className="calendar" userId={currentUser?.uid} />
+    </AppGrid>
   );
 };
 

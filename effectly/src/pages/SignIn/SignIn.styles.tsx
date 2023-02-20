@@ -2,12 +2,13 @@ import styled from "styled-components";
 
 export const Wrapper = styled.section`
   width: 450px;
+  margin: auto;
   text-align: center;
 `;
 
 export const Header = styled.h1`
   font-size: 4rem;
-  font-weight: 800;
+  font-weight: 600;
   margin-bottom: 2rem;
 `;
 

@@ -13,6 +13,7 @@ import GoogleBtnLight from "../../assets/icons/GoogleBtnLight.svg";
 import AppleLogo from "../../assets/icons/AppleLogo.svg";
 import MailInput from "../../components/SignIn/Inputs/MailInput";
 import PasswordInput from "../../components/SignIn/Inputs/PasswordInput";
+import { Globals } from "../../core/variables/variables";
 
 const SignIn = () => {
   const { emailInput, passwordInput, handleEmailFormSubmit } = useSignIn();
@@ -20,8 +21,7 @@ const SignIn = () => {
   return (
     <>
       <Wrapper>
-        <GlobalStyle />
-        <Header>effectly</Header>
+        <Header>{Globals.EFFECTLY}</Header>
         <Form method="get" onSubmit={(e) => handleEmailFormSubmit(e)}>
           <SocialSignIn
             src={GoogleBtnLight}

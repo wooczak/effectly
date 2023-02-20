@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../src/firebase/firebase";
+import { auth } from "../../src/core/firebase/firebase";
 
 describe("Sign In with e-mail and password", () => {
   it("should allow user to log in with proper e-mail and password", () => {
