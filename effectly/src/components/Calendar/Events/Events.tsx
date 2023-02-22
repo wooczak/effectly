@@ -22,7 +22,8 @@ type eventElemsTypes = {
 const Events = ({ events, visibleDay }: PropTypes) => {
   return (
     <React.Fragment>
-      {events.map((event: eventElemsTypes, index: React.Key) => {
+      {events.map((event: eventElemsTypes, index: number | number, arr: []) => {
+        let separateSpace = "0px";
         const {
           event_start: start,
           event_end: end,
@@ -30,17 +31,37 @@ const Events = ({ events, visibleDay }: PropTypes) => {
           event_location: location,
         } = event;
 
+        const previousEvent: eventElemsTypes = arr[index - 1];
+        const currentEvent: eventElemsTypes = arr[index];
+        const previousEventStartTime = previousEvent?.event_start.seconds;
+        const previousEventEndTime = previousEvent?.event_end.seconds;
+        const currentEventStartTime = currentEvent?.event_start.seconds;
+        const currentEventEndTime = currentEvent?.event_end.seconds;
+
+        if (
+          previousEventStartTime >= currentEventStartTime ||
+          previousEventEndTime <= currentEventEndTime
+        ) {
+          separateSpace = "100px";
+        }
+
         const { intervalInMinutes: fromMidnight, durationInMinutes: duration } =
           getEventsMath(visibleDay, start, end);
 
         return (
-          <EventWrapper fromMidnight={`${(fromMidnight * (35/60) * 2) - 35}px`} key={index}>
+          <EventWrapper
+            fromMidnight={`${fromMidnight * (35 / 60) * 2 - 35}px`}
+            key={index}
+            style={{ left: separateSpace }}
+          >
             <EventInfo
               backgroundColor={getRandomColor()}
               // HELP WANTED
-              duration={`${duration * (1440/840)}px`}
+              duration={`${duration * (1440 / 840)}px`}
             >
-              <p className="event-time">{`${convertDate(start)}-${convertDate(end)}`}</p>
+              <p className="event-time">{`${convertDate(start)}-${convertDate(
+                end
+              )}`}</p>
               <p className="event-name">{name}</p>
               <p className="event-location">{location}</p>
             </EventInfo>
