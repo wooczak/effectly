@@ -61,7 +61,7 @@ const Events = ({ events, visibleDay }: PropTypes) => {
             <EventInfo
               backgroundColor={getRandomColor()}
               // HELP WANTED
-              duration={`${duration * (1440 / 840)}px`}
+              duration={`${duration * (1440 / 840) / 4}px`}
             >
               <p className="event-time">{`${convertDate(start)}-${convertDate(
                 end

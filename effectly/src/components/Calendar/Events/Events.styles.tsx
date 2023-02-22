@@ -24,12 +24,13 @@ export const EventInfo = styled.div.attrs((props) => ({
   color: ${(props) => props.theme.black};
   padding-inline: 0.75rem;
   padding-block: ${(props) => props.duration};
-  line-height: 1em;
+  line-height: 0;
 
   & > p {
     background-color: inherit;
     color: inherit;
   }
+
   .event-time {
     position: absolute;
     top: 0.5rem;
@@ -40,10 +41,12 @@ export const EventInfo = styled.div.attrs((props) => ({
   .event-name {
     font-size: 1.1em;
     font-weight: 500;
+    line-height: 1em;
   }
 
   .event-location {
     font-size: 0.85em;
+    margin-top: -0.5em;
   }
 
   border-radius: 0.5em;
