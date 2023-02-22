@@ -37,6 +37,7 @@ const Events = ({ events, visibleDay }: PropTypes) => {
           <EventWrapper fromMidnight={`${(fromMidnight * (35/60) * 2) - 35}px`} key={index}>
             <EventInfo
               backgroundColor={getRandomColor()}
+              // HELP WANTED
               duration={`${duration * (1440/840)}px`}
             >
               <p className="event-time">{`${convertDate(start)}-${convertDate(end)}`}</p>
