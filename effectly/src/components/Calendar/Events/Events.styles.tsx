@@ -24,7 +24,7 @@ export const EventInfo = styled.div.attrs((props) => ({
   color: ${(props) => props.theme.black};
   padding-inline: 0.75rem;
   padding-block: ${(props) => props.duration};
-  line-height: 0;
+  line-height: 1em;
 
   & > p {
     background-color: inherit;
