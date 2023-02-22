@@ -4,13 +4,20 @@ export const CalendarWrapper = styled.article`
   background-color: ${(props) => props.theme.bgSecondary};
   border-radius: 10px;
   border: 1px solid ${(props) => props.theme.darkPurple};
-  padding: 2rem;
   overflow-y: scroll;
 `;
 
-export const EventsRows = styled.div`
+export const EventsWrapper = styled.div`
   background-color: transparent;
-  margin-block: 2rem;
+  margin-inline: 1.25rem;
+  display: flex;
+  gap: 2rem;
+`;
+
+export const EventBlocks = styled.div`
+  position: relative;
+  width: 100%;
+  background-color: transparent;
 `;
 
 export const NoEventsInfo = styled.div`

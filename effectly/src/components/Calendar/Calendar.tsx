@@ -1,7 +1,12 @@
-import { CalendarWrapper, EventsRows, NoEventsInfo } from "./Calendar.styles";
+import {
+  CalendarWrapper,
+  EventsWrapper,
+  NoEventsInfo,
+  EventBlocks
+} from "./Calendar.styles";
 
 import DatePicker from "./DatePicker/DatePicker";
-import Events from "./Event/Event";
+import Events from "./Events/Events";
 
 import useCalendarData from "../../hooks/Calendar/useCalendarData";
 import useDatePick from "../../hooks/Calendar/useDatePick";
@@ -9,6 +14,7 @@ import useDatePick from "../../hooks/Calendar/useDatePick";
 import { Calendar as CalendarVars } from "../../core/variables/variables";
 import { filterEvents } from "./helpers/events";
 import { Globals } from "../../core/variables/variables";
+import TimeColumn from "./TimeColumn/TimeColumn";
 
 type CalendarProps = {
   className: string;
@@ -30,7 +36,7 @@ const Calendar = ({ className, userId }: CalendarProps) => {
     visibleDay
   );
 
-  const eventsFetched = events.length !== 0;
+  const eventsFetched = events && events.length !== 0;
 
   return (
     <CalendarWrapper className={className}>
@@ -49,9 +55,12 @@ const Calendar = ({ className, userId }: CalendarProps) => {
               <p>{CalendarVars.NO_EVENTS_ADDED}</p>
             </NoEventsInfo>
           ) : (
-            <EventsRows>
-              <Events data={events} visibleDay={visibleDay} />
-            </EventsRows>
+            <EventsWrapper>
+              <TimeColumn />
+              <EventBlocks>
+                <Events events={events} visibleDay={visibleDay} />
+              </EventBlocks>
+            </EventsWrapper>
           )}
         </>
       )}

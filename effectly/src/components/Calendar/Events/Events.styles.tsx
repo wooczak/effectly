@@ -6,10 +6,8 @@ export const EventWrapper = styled.div.attrs((props) => ({
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 1rem;
   background-color: transparent;
-  margin-block: 0.9rem;
-  position: relative;
+  position: absolute;
   top: ${(props) => props.fromMidnight};
 `;
 
@@ -31,6 +29,12 @@ export const EventInfo = styled.div.attrs((props) => ({
   & > p {
     background-color: inherit;
     color: inherit;
+  }
+  .event-time {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.75rem;
+    font-size: 0.8em;
   }
 
   .event-name {

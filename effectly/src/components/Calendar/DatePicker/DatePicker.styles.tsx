@@ -5,11 +5,11 @@ export const DatePickerWrapper = styled.div`
   display: flex;
   top: 0;
   justify-content: space-between;
-  width: 75%;
-  margin: auto;
+  width: 100%;
+  padding: 2rem;
   background-color: inherit;
-  color: ${(props) => props.theme.darkPurple};
-  font-size: 1.25rem;
+  color: ${(props) => props.theme.white};
+  font-size: 1.4rem;
 `;
 
 export const Arrow = styled.img`
