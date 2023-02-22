@@ -41,10 +41,11 @@ const Events = ({ events, visibleDay }: PropTypes) => {
         const currentEventEndTime = currentEvent?.event_end.seconds;
 
         if (
+          index !== 0 && 
           previousEventStartTime >= currentEventStartTime ||
           previousEventEndTime <= currentEventEndTime
         ) {
-          separateSpace = `${150 * index}px`;
+          separateSpace = `${75 * (1/index)}%`;
         }
         // ---------
 

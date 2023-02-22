@@ -10,6 +10,7 @@ export const DatePickerWrapper = styled.div`
   background-color: inherit;
   color: ${(props) => props.theme.white};
   font-size: 1.4rem;
+  z-index: 999;
 `;
 
 export const Arrow = styled.img`
