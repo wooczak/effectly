@@ -31,6 +31,8 @@ const Events = ({ events, visibleDay }: PropTypes) => {
           event_location: location,
         } = event;
 
+        // ---------
+        // TODO: create this logic in a separate imported function
         const previousEvent: eventElemsTypes = arr[index - 1];
         const currentEvent: eventElemsTypes = arr[index];
         const previousEventStartTime = previousEvent?.event_start.seconds;
@@ -42,8 +44,9 @@ const Events = ({ events, visibleDay }: PropTypes) => {
           previousEventStartTime >= currentEventStartTime ||
           previousEventEndTime <= currentEventEndTime
         ) {
-          separateSpace = "100px";
+          separateSpace = `${150 * index}px`;
         }
+        // ---------
 
         const { intervalInMinutes: fromMidnight, durationInMinutes: duration } =
           getEventsMath(visibleDay, start, end);
