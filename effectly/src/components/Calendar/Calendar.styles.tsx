@@ -10,9 +10,11 @@ export const CalendarWrapper = styled.article`
 export const EventsWrapper = styled.div`
   background-color: transparent;
   margin-inline: 1.25rem;
-  display: flex;
-  gap: 2rem;
-  height: 808px;
+  display: grid;
+  grid-template-rows: repeat(48, 1.5rem);
+  grid-template-columns: 20% 80%;
+  gap: 1rem;
+  height: 900px;
 `;
 
 export const EventBlocks = styled.div`

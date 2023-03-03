@@ -2,20 +2,9 @@ import styled from "styled-components";
 
 export const EventsGrid = styled.div`
   display: grid;
-  width: 100%;
-  grid-template-columns: auto;
-  grid-template-rows: repeat(48, 1.5rem);
+  grid-column: 2 / 3;
+  grid-row: 1 / 49;
   background-color: transparent;
-  gap: 1rem;
-`;
-
-export const EventWrapper = styled.div.attrs((props) => ({
-  start: props.start,
-  end: props.end,
-}))`
-  background-color: transparent;
-  grid-row-start: ${(props) => props.start};
-  grid-row-end: ${(props) => props.end};
 `;
 
 export const Date = styled.div`
@@ -24,13 +13,20 @@ export const Date = styled.div`
 `;
 
 export const EventInfo = styled.div.attrs((props) => ({
+  // @ts-ignore
   backgroundColor: props.backgroundColor,
+  // @ts-ignore
+  start: props.start,
+  // @ts-ignore
+  end: props.end,
 }))`
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.theme.black};
-  padding-inline: 0.75rem;
-  height: 100%;
+  padding: 1rem 0.75rem;
   line-height: 0;
+  position: relative;
+  grid-row-start: ${(props) => props.start};
+  grid-row-end: ${(props) => props.end};
 
   & > p {
     background-color: inherit;

@@ -1,13 +1,13 @@
-import { HourStamp, TimeColumnWrapper } from "./TimeColumn.styles";
+import { HourStamp } from "./TimeColumn.styles";
 import { timeData } from "./timeData";
 
 const TimeColumn = () => {
   return (
-    <TimeColumnWrapper>
-      {timeData.map((hourStamp) => (
-        <HourStamp>{hourStamp}</HourStamp>
+    <>
+      {timeData.map((hourStamp, index) => (
+        <HourStamp gridRow={index + 1}>{hourStamp}</HourStamp>
       ))}
-    </TimeColumnWrapper>
+    </>
   );
 };
 

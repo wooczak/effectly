@@ -1,14 +1,10 @@
 import styled from "styled-components";
 
-export const TimeColumnWrapper = styled.aside`
-  background: transparent;
-  display: grid;
-  grid-template-rows: repeat(48, 1.5rem);
-  gap: 1rem;
-`;
-
-export const HourStamp = styled.p`
-  display: inline-block;
+export const HourStamp = styled.p.attrs((props) => ({
+  // @ts-ignore
+  gridRow: props.gridRow,
+}))`
   background-color: transparent;
   margin-block: 0;
+  grid-row: ${(props) => props.gridRow} / ${(props) => props.gridRow + 1};
 `;

@@ -79,7 +79,20 @@ export const getEventsMath = (
     (intervalfromMidnight.minutes as number) +
     1;
 
-  const calendarGridRow = ((intervalInMinutes / 30) * 30) / 30;
+  const assignInteger = (intervalInMinutes: number) => {
+    let min = 1;
+    let max = 30;
+    for (let i = 1; i <= 49; i++) {
+      if (intervalInMinutes >= min && intervalInMinutes <= max) {
+        return i;
+      } else {
+        min += 30;
+        max += 30;
+      }
+    }
+  };
+
+  const calendarGridRow = assignInteger(intervalInMinutes);
 
   // Calculates the duration of the event
   const duration = intervalToDuration({
