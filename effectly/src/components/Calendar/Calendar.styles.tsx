@@ -12,12 +12,16 @@ export const EventsWrapper = styled.div`
   margin-inline: 1.25rem;
   display: flex;
   gap: 2rem;
+  height: 808px;
 `;
 
 export const EventBlocks = styled.div`
   position: relative;
   width: 100%;
   background-color: transparent;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 100vh;
 `;
 
 export const NoEventsInfo = styled.div`

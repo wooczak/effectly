@@ -79,6 +79,8 @@ export const getEventsMath = (
     (intervalfromMidnight.minutes as number) +
     1;
 
+  const calendarGridRow = ((intervalInMinutes / 30) * 30) / 30;
+
   // Calculates the duration of the event
   const duration = intervalToDuration({
     start: eventStartFormatted,
@@ -87,5 +89,5 @@ export const getEventsMath = (
   const durationInMinutes =
     hoursToMinutes(duration.hours as number) + (duration.minutes as number);
 
-  return { intervalInMinutes, durationInMinutes };
+  return { calendarGridRow, durationInMinutes };
 };

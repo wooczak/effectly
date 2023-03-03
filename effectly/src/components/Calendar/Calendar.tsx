@@ -2,7 +2,7 @@ import {
   CalendarWrapper,
   EventsWrapper,
   NoEventsInfo,
-  EventBlocks
+  EventBlocks,
 } from "./Calendar.styles";
 
 import DatePicker from "./DatePicker/DatePicker";
@@ -57,9 +57,7 @@ const Calendar = ({ className, userId }: CalendarProps) => {
           ) : (
             <EventsWrapper>
               <TimeColumn />
-              <EventBlocks>
-                <Events events={events} visibleDay={visibleDay} />
-              </EventBlocks>
+              <Events events={events} visibleDay={visibleDay} />
             </EventsWrapper>
           )}
         </>
