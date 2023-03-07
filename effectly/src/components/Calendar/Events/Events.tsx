@@ -1,6 +1,6 @@
 import { convertDate, getEventsMath } from "../helpers/events";
 import getRandomColor from "../helpers/getRandomColor";
-import { EventWrapper, EventInfo, EventsGrid } from "./Events.styles";
+import { EventInfo } from "./Events.styles";
 
 type PropTypes = {
   events: any;
@@ -21,24 +21,29 @@ type eventElemsTypes = {
 const Events = ({ events, visibleDay }: PropTypes) => {
   return (
     <>
-      {events.map((event: eventElemsTypes, index: number | number) => {
+      {events.map((event: eventElemsTypes, index: number) => {
         const { event_start: start, event_end: end, event_name: name } = event;
 
-        const { calendarGridRow: rowStart, durationInMinutes: duration } =
+        const { calendarGridRowStart: rowStart, calendarGridRowEnd: rowEnd } =
           getEventsMath(visibleDay, start, end);
 
+        const isEventShort = (rowEnd as number) - (rowStart as number) < 2;
+
         return (
-            <EventInfo
-              backgroundColor={getRandomColor()}
-              key={index}
-              start={rowStart}
-              end={rowStart * 2 + duration / 60}
-            >
-              <p className="event-time">{`${convertDate(start)}-${convertDate(
-                end
-              )}`}</p>
-              <p className="event-name">{name}</p>
-            </EventInfo>
+          <EventInfo
+            backgroundColor={getRandomColor()}
+            key={index}
+            start={rowStart === 1 ? rowStart : (rowStart as number) + 1}
+            end={(rowEnd as number) + 1}
+            isEventShort={isEventShort}
+          >
+            <p
+              className={`event-time ${isEventShort ? "short-event" : ""}`}
+            >{`${convertDate(start)}-${convertDate(end)}`}</p>
+            <p className={`event-name ${isEventShort ? "short-event" : ""}`}>
+              {name}
+            </p>
+          </EventInfo>
         );
       })}
     </>

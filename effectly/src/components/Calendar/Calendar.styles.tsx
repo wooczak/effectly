@@ -12,7 +12,7 @@ export const EventsWrapper = styled.div`
   margin-inline: 1.25rem;
   display: grid;
   grid-template-rows: repeat(48, 1.5rem);
-  grid-template-columns: 20% 80%;
+  grid-template-columns: auto;
   gap: 1rem;
   height: 900px;
 `;

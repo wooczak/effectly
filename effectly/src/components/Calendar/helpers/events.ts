@@ -70,16 +70,24 @@ export const getEventsMath = (
 
   // Calculates how many minutes have passed since the beginning of the day
   const midnight = set(visibleDay, { hours: 0, minutes: 0, seconds: 0 });
-  const intervalfromMidnight = intervalToDuration({
+  const intervalStartFromMidnight = intervalToDuration({
     start: midnight,
     end: eventStartFormatted,
   });
-  const intervalInMinutes =
-    hoursToMinutes(intervalfromMidnight.hours as number) +
-    (intervalfromMidnight.minutes as number) +
+  const intervalEndFromMidnight = intervalToDuration({
+    start: midnight,
+    end: eventEndFormatted,
+  });
+  const intervalStartInMinutes =
+    hoursToMinutes(intervalStartFromMidnight.hours as number) +
+    (intervalStartFromMidnight.minutes as number) +
+    1;
+  const intervalEndInMinutes =
+    hoursToMinutes(intervalEndFromMidnight.hours as number) +
+    (intervalEndFromMidnight.minutes as number) +
     1;
 
-  const assignInteger = (intervalInMinutes: number) => {
+  const assignGridRow = (intervalInMinutes: number) => {
     let min = 1;
     let max = 30;
     for (let i = 1; i <= 49; i++) {
@@ -92,15 +100,8 @@ export const getEventsMath = (
     }
   };
 
-  const calendarGridRow = assignInteger(intervalInMinutes);
+  const calendarGridRowStart = assignGridRow(intervalStartInMinutes);
+  const calendarGridRowEnd = assignGridRow(intervalEndInMinutes);
 
-  // Calculates the duration of the event
-  const duration = intervalToDuration({
-    start: eventStartFormatted,
-    end: eventEndFormatted,
-  });
-  const durationInMinutes =
-    hoursToMinutes(duration.hours as number) + (duration.minutes as number);
-
-  return { calendarGridRow, durationInMinutes };
+  return { calendarGridRowStart, calendarGridRowEnd };
 };

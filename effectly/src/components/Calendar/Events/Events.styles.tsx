@@ -19,36 +19,43 @@ export const EventInfo = styled.div.attrs((props) => ({
   start: props.start,
   // @ts-ignore
   end: props.end,
+  // @ts-ignore
+  isEventShort: props.isEventShort
 }))`
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.theme.black};
-  padding: 1rem 0.75rem;
-  line-height: 0;
-  position: relative;
+  padding: ${props => props.isEventShort ? "0" : "0.75rem"};
   grid-row-start: ${(props) => props.start};
   grid-row-end: ${(props) => props.end};
+  overflow-wrap: break-word;
 
   & > p {
-    background-color: inherit;
+    background-color: transparent;
     color: inherit;
+    margin: 0;
   }
 
   .event-time {
-    position: absolute;
-    top: 0.5rem;
-    left: 0.75rem;
     font-size: 0.8em;
+    line-height: normal;
   }
 
   .event-name {
     font-size: 1.1em;
     font-weight: 500;
     line-height: 1em;
+    margin-top: 1rem;
   }
 
   .event-location {
     font-size: 0.85em;
     margin-top: -0.5em;
+  }
+
+  .short-event {
+    font-size: 0.75em;
+    display: inline-block;
+    margin-top: 0;
   }
 
   border-radius: 0.5em;
