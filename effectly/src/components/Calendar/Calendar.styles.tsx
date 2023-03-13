@@ -17,15 +17,6 @@ export const EventsWrapper = styled.div`
   height: 900px;
 `;
 
-export const EventBlocks = styled.div`
-  position: relative;
-  width: 100%;
-  background-color: transparent;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  height: 100vh;
-`;
-
 export const NoEventsInfo = styled.div`
   background-color: transparent;
   margin-top: 2rem;
@@ -33,5 +24,29 @@ export const NoEventsInfo = styled.div`
   & > p {
     background-color: transparent;
     text-align: center;
+  }
+`;
+
+export const CalendarHeader = styled.div`
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+`;
+
+export const AddNewEventBtn = styled.button`
+  font-size: 1em;
+  background-color: transparent;
+  border: 1px solid ${props => props.theme.darkPurple};
+  border-radius: 0.6rem;
+  padding: 0.25rem 1.5rem;
+  width: auto;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${props => props.theme.darkPurple};
+    color: ${props => props.theme.white};
   }
 `;

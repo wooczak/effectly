@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import { darkTheme } from "./theme/theme";
 
-type ThemeType = typeof darkTheme
+type ThemeType = typeof darkTheme;
 
 const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
     * {
@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
         color: ${(props) => props.theme.text};
     };
 
-    h1 { font-size: 3rem; }
+    h1 { font-size: 3rem; font-family: 'Clash Display', sans-serif; }
     h2 { font-size: 2rem; }
     h3 { font-size: 1.3rem; }
     p { font-size: 1rem; }

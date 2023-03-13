@@ -2,19 +2,21 @@ import {
   CalendarWrapper,
   EventsWrapper,
   NoEventsInfo,
-  EventBlocks,
+  CalendarHeader,
+  AddNewEventBtn,
 } from "./Calendar.styles";
-
-import DatePicker from "./DatePicker/DatePicker";
-import Events from "./Events/Events";
 
 import useCalendarData from "../../hooks/Calendar/useCalendarData";
 import useDatePick from "../../hooks/Calendar/useDatePick";
-
-import { Calendar as CalendarVars } from "../../core/variables/variables";
 import { filterEvents } from "./helpers/events";
-import { Globals } from "../../core/variables/variables";
+
+import DatePicker from "./DatePicker/DatePicker";
+import Events from "./Events/Events";
 import TimeColumn from "./TimeColumn/TimeColumn";
+import {
+  Calendar as CalendarVars,
+  Globals,
+} from "../../core/variables/variables";
 
 type CalendarProps = {
   className: string;
@@ -44,12 +46,16 @@ const Calendar = ({ className, userId }: CalendarProps) => {
         Globals.LOADING
       ) : (
         <>
-          <DatePicker
-            day={visibleDay}
-            weekDay={weekDay}
-            incrementDay={incrementDay}
-            decrementDay={decrementDay}
-          />
+          <CalendarHeader>
+            <DatePicker
+              day={visibleDay}
+              weekDay={weekDay}
+              incrementDay={incrementDay}
+              decrementDay={decrementDay}
+            />
+            <AddNewEventBtn>Add new event</AddNewEventBtn>
+          </CalendarHeader>
+
           {!eventsFetched ? (
             <NoEventsInfo>
               <p>{CalendarVars.NO_EVENTS_ADDED}</p>

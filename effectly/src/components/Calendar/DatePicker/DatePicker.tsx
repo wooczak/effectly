@@ -1,4 +1,5 @@
 import { isToday } from "date-fns";
+
 import { Arrow, DatePickerWrapper } from "./DatePicker.styles";
 import ArrowLeftIcon from "../../../assets/icons/ArrowLeft.svg";
 import ArrowRightIcon from "../../../assets/icons/ArrowRight.svg";
