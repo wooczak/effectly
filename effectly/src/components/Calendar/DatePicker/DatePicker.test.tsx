@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
+import { isToday } from 'date-fns';
 import { describe, it, expect, vi } from "vitest";
+
 import useDatePick from "../../../hooks/Calendar/useDatePick";
 import Calendar from "../Calendar";
 import DatePicker from "./DatePicker";
@@ -14,7 +16,7 @@ vi.mock("../../../hooks/Calendar/useDatePick", () => ({
 }));
 
 vi.mock("date-fns", () => ({
-  isToday: vi.fn(),
+  isToday: vi.fn()
 }));
 
 const mockDataNotToday: DataType = {
@@ -48,7 +50,7 @@ const renderDatePicker = (data: DataType) => {
 describe("WHEN the date picker is rendered", () => {
   describe("AND the passed date is not equal to today", () => {
     it("THEN should not add <Today> string to the UI", () => {
-      renderDatePicker(mockDataNotToday);
+      renderDatePicker(mockDataNotToday)
       const wrapper = screen.getByTestId("date-picker-wrapper");
 
       expect(wrapper).toBe("hello");

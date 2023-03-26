@@ -1,4 +1,5 @@
 import { expect, it, describe } from "vitest";
+import { useCallback } from "react";
 import { filterEvents, convertDate, getEventsMath } from "./events";
 
 const mockCalendarData: any[] = [
@@ -29,7 +30,6 @@ const mockCalendarData: any[] = [
 ];
 
 const mockDay: Date = new Date("January 20, 2023");
-
 const expectedCalendarData: any = [mockCalendarData[2], mockCalendarData[1]];
 
 describe("WHEN the filterEvents function receives data", () => {
@@ -49,17 +49,17 @@ describe("WHEN the convertDate function receives date as a timestamp", () => {
 });
 
 describe("WHEN the getEventsMath function receives data", () => {
-  it("THEN should return duration of th event and the interval from midnight to the event start", () => {
+  it("THEN should return proper values for the grid-row-start and grid-row-end for the event", () => {
     const eventStart = mockCalendarData[2].event_start;
     const eventEnd = mockCalendarData[2].event_end;
 
-    const { intervalInMinutes, durationInMinutes } = getEventsMath(
+    const { calendarGridRowStart, calendarGridRowEnd } = getEventsMath(
       mockDay,
       eventStart,
       eventEnd
     );
 
-    expect(intervalInMinutes).toEqual(841); // 841 minutes from midnight to event_start
-    expect(durationInMinutes).toEqual(240); // duration equals 240 minutes
+    expect(calendarGridRowStart).toEqual(29);
+    expect(calendarGridRowEnd).toEqual(37);
   });
 });

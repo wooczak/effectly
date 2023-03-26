@@ -31,6 +31,7 @@ const Events = ({ events, visibleDay }: PropTypes) => {
 
         return (
           <EventInfo
+            data-testid="event-info"
             backgroundColor={getRandomColor()}
             key={index}
             start={rowStart === 1 ? rowStart : (rowStart as number) + 1}
@@ -38,9 +39,10 @@ const Events = ({ events, visibleDay }: PropTypes) => {
             isEventShort={isEventShort}
           >
             <p
-              className={`event-time ${isEventShort ? "short-event" : ""}`}
+              className={`event-time ${isEventShort && "short-event"}`}
+              data-testid="event-time-paragraph"
             >{`${convertDate(start)}-${convertDate(end)}`}</p>
-            <p className={`event-name ${isEventShort ? "short-event" : ""}`}>
+            <p className={`event-name ${isEventShort && "short-event"}`}>
               {name}
             </p>
           </EventInfo>
