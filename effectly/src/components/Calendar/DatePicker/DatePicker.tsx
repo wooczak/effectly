@@ -1,27 +1,24 @@
-import { isToday } from "date-fns";
-
 import { Arrow, DatePickerWrapper } from "./DatePicker.styles";
+
 import ArrowLeftIcon from "../../../assets/icons/ArrowLeft.svg";
 import ArrowRightIcon from "../../../assets/icons/ArrowRight.svg";
+import { Calendar } from "../../../core/variables/variables";
 
 interface DatePickerTypes {
-  day: Date;
-  weekDay: String;
+  dayString: string;
+  isToday: boolean;
+  weekDay: string;
   incrementDay: () => void;
   decrementDay: () => void;
 }
 
 const DatePicker = ({
-  day,
+  isToday,
+  dayString,
   weekDay,
   incrementDay,
   decrementDay,
 }: DatePickerTypes) => {
-  const dayString = day?.toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "short",
-  });
-
   return (
     <DatePickerWrapper data-testid="date-picker-wrapper">
       <Arrow
@@ -29,7 +26,8 @@ const DatePicker = ({
         src={ArrowLeftIcon}
         data-testid="decrement-day-arrow"
       />
-      {`${isToday(day) ? "Today, " : ""}${`${weekDay}, `}${dayString}`}
+      {`${isToday ? Calendar.TODAY : ""}
+      ${`${weekDay}, ${dayString}`}`}
       <Arrow
         onClick={incrementDay}
         src={ArrowRightIcon}

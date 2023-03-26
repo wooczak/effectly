@@ -1,3 +1,17 @@
+import { isToday } from "date-fns";
+import useCalendarData from "../../hooks/Calendar/useCalendarData";
+import useEventsFilter from "../../hooks/Calendar/useEventsFilter";
+import useDatePick from "../../hooks/Calendar/useDatePick";
+
+import DatePicker from "./DatePicker/DatePicker";
+import Events from "./Events/Events";
+import TimeColumn from "./TimeColumn/TimeColumn";
+
+import { areEventsFetched } from "./helpers/events";
+import {
+  Calendar as CalendarVars,
+  Globals,
+} from "../../core/variables/variables";
 import {
   CalendarWrapper,
   EventsWrapper,
@@ -5,18 +19,6 @@ import {
   CalendarHeader,
   AddNewEventBtn,
 } from "./Calendar.styles";
-
-import useCalendarData from "../../hooks/Calendar/useCalendarData";
-import useDatePick from "../../hooks/Calendar/useDatePick";
-import { filterEvents } from "./helpers/events";
-
-import DatePicker from "./DatePicker/DatePicker";
-import Events from "./Events/Events";
-import TimeColumn from "./TimeColumn/TimeColumn";
-import {
-  Calendar as CalendarVars,
-  Globals,
-} from "../../core/variables/variables";
 
 type CalendarProps = {
   className: string;
@@ -32,13 +34,15 @@ const Calendar = ({ className, userId }: CalendarProps) => {
     incrementDay,
     decrementDay,
   } = useDatePick();
-
-  const { sortedAndFilteredEvents: events } = filterEvents(
+  const { sortedAndFilteredEvents: events } = useEventsFilter(
     calendarData,
     visibleDay
   );
 
-  const eventsFetched = events && events.length !== 0;
+  const dayString = visibleDay?.toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "short",
+  });
 
   return (
     <CalendarWrapper className={className}>
@@ -48,7 +52,8 @@ const Calendar = ({ className, userId }: CalendarProps) => {
         <>
           <CalendarHeader>
             <DatePicker
-              day={visibleDay}
+              isToday={isToday(visibleDay)}
+              dayString={dayString}
               weekDay={weekDay}
               incrementDay={incrementDay}
               decrementDay={decrementDay}
@@ -56,7 +61,7 @@ const Calendar = ({ className, userId }: CalendarProps) => {
             <AddNewEventBtn>Add new event</AddNewEventBtn>
           </CalendarHeader>
 
-          {!eventsFetched ? (
+          {!areEventsFetched(events) ? (
             <NoEventsInfo>
               <p>{CalendarVars.NO_EVENTS_ADDED}</p>
             </NoEventsInfo>

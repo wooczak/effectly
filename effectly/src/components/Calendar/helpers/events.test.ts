@@ -1,6 +1,5 @@
 import { expect, it, describe } from "vitest";
-import { useCallback } from "react";
-import { filterEvents, convertDate, getEventsMath } from "./events";
+import { areEventsFetched, convertDate, getEventsMath } from "./events";
 
 const mockCalendarData: any[] = [
   {
@@ -30,15 +29,6 @@ const mockCalendarData: any[] = [
 ];
 
 const mockDay: Date = new Date("January 20, 2023");
-const expectedCalendarData: any = [mockCalendarData[2], mockCalendarData[1]];
-
-describe("WHEN the filterEvents function receives data", () => {
-  it("THEN returns a properly sorted and filtered events", () => {
-    const { sortedAndFilteredEvents } = filterEvents(mockCalendarData, mockDay);
-
-    expect(sortedAndFilteredEvents).toEqual(expectedCalendarData);
-  });
-});
 
 describe("WHEN the convertDate function receives date as a timestamp", () => {
   it("THEN it should return the date in a specific locale date string", () => {
@@ -61,5 +51,23 @@ describe("WHEN the getEventsMath function receives data", () => {
 
     expect(calendarGridRowStart).toEqual(29);
     expect(calendarGridRowEnd).toEqual(37);
+  });
+});
+
+describe("WHEN the areEventsFetched function is called", () => {
+  describe("AND it receives a proper payload", () => {
+    it("THEN should return true", () => {
+      const properPayload: any[] = ["test", "payload"];
+      const result = areEventsFetched(properPayload);
+      expect(result).toEqual(true);
+    });
+  });
+
+  describe("AND it does not receive a proper payload", () => {
+    it("THEN should return false", () => {
+      const improperPayload: any[] = [];
+      const result = areEventsFetched(improperPayload);
+      expect(result).toEqual(false);
+    });
   });
 });
