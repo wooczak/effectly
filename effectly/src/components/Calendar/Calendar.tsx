@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from "react-redux";
 import { isToday } from "date-fns";
 import useCalendarData from "../../hooks/Calendar/useCalendarData";
 import useEventsFilter from "../../hooks/Calendar/useEventsFilter";
@@ -6,12 +7,15 @@ import useDatePick from "../../hooks/Calendar/useDatePick";
 import DatePicker from "./DatePicker/DatePicker";
 import Events from "./Events/Events";
 import TimeColumn from "./TimeColumn/TimeColumn";
+import AddNewEventModal from "../../features/Calendar/AddNewEvent/AddNewEvent";
 
-import { areEventsFetched } from "./helpers/events";
+import { areEventsFetched, returnToLocaleDateString } from "./helpers/events";
 import {
   Calendar as CalendarVars,
   Globals,
 } from "../../core/variables/variables";
+import { toggleAddNewEventModal } from "../../store/calendar/calendarSlice";
+
 import {
   CalendarWrapper,
   EventsWrapper,
@@ -19,6 +23,7 @@ import {
   CalendarHeader,
   AddNewEventBtn,
 } from "./Calendar.styles";
+import { GlobalStore } from "../../store/storeTypes";
 
 type CalendarProps = {
   className: string;
@@ -27,6 +32,10 @@ type CalendarProps = {
 };
 
 const Calendar = ({ className, userId }: CalendarProps) => {
+  const { isAddNewEventModalOpened } = useSelector(
+    (state: GlobalStore) => state.calendar
+  );
+  const updateStore = useDispatch();
   const { calData: calendarData } = useCalendarData(userId);
   const {
     calendarDay: visibleDay,
@@ -39,13 +48,14 @@ const Calendar = ({ className, userId }: CalendarProps) => {
     visibleDay
   );
 
-  const dayString = visibleDay?.toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "short",
-  });
+  const dayString = returnToLocaleDateString(visibleDay);
+
+  const handleAddNewEventBtnClick = () => updateStore(toggleAddNewEventModal());
 
   return (
     <CalendarWrapper className={className}>
+      {isAddNewEventModalOpened && <AddNewEventModal />}
+
       {!calendarData ? (
         Globals.LOADING
       ) : (
@@ -58,7 +68,9 @@ const Calendar = ({ className, userId }: CalendarProps) => {
               incrementDay={incrementDay}
               decrementDay={decrementDay}
             />
-            <AddNewEventBtn>Add new event</AddNewEventBtn>
+            <AddNewEventBtn onClick={handleAddNewEventBtnClick}>
+              Add new event
+            </AddNewEventBtn>
           </CalendarHeader>
 
           {!areEventsFetched(events) ? (

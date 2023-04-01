@@ -3,8 +3,9 @@ import { auth } from "../../core/firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
+
 import { login, logout } from "../../store/users/userSlice";
-import { User, UserRootState } from "../../store/users/types";
+import { GlobalStore } from "../../store/storeTypes";
 
 const useCurrentUser = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const useCurrentUser = () => {
   }, []);
 
   // Retrieve the currently signed in user from the store
-  const { user } = useSelector<UserRootState, User>((state) => state.user);
+  const { user } = useSelector((state: GlobalStore) => state.user);
 
   return user;
 };
