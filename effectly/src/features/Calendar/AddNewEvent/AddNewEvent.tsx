@@ -1,9 +1,20 @@
+import { useDispatch } from "react-redux";
+import { toggleAddNewEventModal } from "../../../store/calendar/calendarSlice";
 import { Modal } from "./AddNewEvents.styles";
 
-const AddNewEvent = () => {
+type PropTypes = {
+  isOpened: boolean;
+};
+
+const AddNewEvent = ({ isOpened }: PropTypes) => {
+  const updateStore = useDispatch();
+
+  const handleClose = () => updateStore(toggleAddNewEventModal());
+
   return (
-    <Modal>
+    <Modal isOpened={isOpened}>
       <p>Hello</p>
+      <button onClick={handleClose}>Close me</button>
     </Modal>
   );
 };

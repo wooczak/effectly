@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+type IProps = {
+    backgroundColor: string;
+    start: number;
+    end: number;
+    isEventShort: boolean
+}
+
 export const EventsGrid = styled.div`
   display: grid;
   grid-column: 2 / 3;
@@ -12,16 +19,7 @@ export const Date = styled.div`
   width: 5ch;
 `;
 
-export const EventInfo = styled.div.attrs((props) => ({
-  // @ts-ignore
-  backgroundColor: props.backgroundColor,
-  // @ts-ignore
-  start: props.start,
-  // @ts-ignore
-  end: props.end,
-  // @ts-ignore
-  isEventShort: props.isEventShort
-}))`
+export const EventInfo = styled.div<IProps>`
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.theme.black};
   padding: ${props => props.isEventShort ? "0" : "0.75rem"};

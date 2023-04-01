@@ -25,6 +25,7 @@ import {
 } from "./Calendar.styles";
 import { GlobalStore } from "../../store/storeTypes";
 
+
 type CalendarProps = {
   className: string;
   userId: string;
@@ -32,7 +33,7 @@ type CalendarProps = {
 };
 
 const Calendar = ({ className, userId }: CalendarProps) => {
-  const { isAddNewEventModalOpened } = useSelector(
+  const { isAddNewEventModalOpened: isModalOpened } = useSelector(
     (state: GlobalStore) => state.calendar
   );
   const updateStore = useDispatch();
@@ -54,7 +55,7 @@ const Calendar = ({ className, userId }: CalendarProps) => {
 
   return (
     <CalendarWrapper className={className}>
-      {isAddNewEventModalOpened && <AddNewEventModal />}
+      <AddNewEventModal isOpened={isModalOpened}/>
 
       {!calendarData ? (
         Globals.LOADING

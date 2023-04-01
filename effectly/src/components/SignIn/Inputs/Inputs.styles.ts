@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
-export const Input = styled.input.attrs((props) => ({
-  type: props.type,
-  id: props.id,
-  required: props.required,
-  ref: props.ref,
-  onChange: props.onChange
-}))`
+export const Input = styled.input`
   height: 4rem;
   border-radius: 0.75rem;
   outline: none;
@@ -32,9 +26,7 @@ export const Label = styled.label`
   & > p { margin-top: 1rem; margin-bottom: 0.5rem; }
 `;
 
-export const PasswordEye = styled.img.attrs(props => ({
-  src: props.src
-}))`
+export const PasswordEye = styled.img`
   position: absolute;
   right: 0.75rem;
   bottom: calc(2rem - 1px);

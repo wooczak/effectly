@@ -12,10 +12,7 @@ export const Header = styled.h1`
   margin-bottom: 2rem;
 `;
 
-export const Form = styled.form.attrs((props) => ({
-  method: props.method,
-  onSubmit: props.onSubmit,
-}))`
+export const Form = styled.form`
   text-align: left;
   position: relative;
 `;
@@ -48,9 +45,7 @@ export const FlexBlock = styled.div`
   }
 `;
 
-export const LogInBtn = styled.button.attrs((props) => ({
-  type: props.type,
-}))`
+export const LogInBtn = styled.button`
   background-color: ${(props) => props.theme.darkPurple};
   width: 100%;
   color: ${(props) => props.theme.black};
