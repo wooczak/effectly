@@ -1,4 +1,3 @@
-import GlobalStyle from "../../core/style/globalStyle";
 import {
   Header,
   Wrapper,
@@ -13,7 +12,7 @@ import GoogleBtnLight from "../../assets/icons/GoogleBtnLight.svg";
 import AppleLogo from "../../assets/icons/AppleLogo.svg";
 import MailInput from "../../components/SignIn/Inputs/MailInput";
 import PasswordInput from "../../components/SignIn/Inputs/PasswordInput";
-import { Globals } from "../../core/variables/variables";
+import { Globals, SignIn as SignInText } from "../../core/variables/variables";
 
 const SignIn = () => {
   const { emailInput, passwordInput, handleEmailFormSubmit } = useSignIn();
@@ -25,13 +24,13 @@ const SignIn = () => {
         <Form method="get" onSubmit={(e) => handleEmailFormSubmit(e)}>
           <SocialSignIn
             src={GoogleBtnLight}
-            altText="Google Logo"
-            text="Sign in with Google"
+            altText={SignInText.GOOGLE.ALT}
+            text={SignInText.GOOGLE.TEXT}
           />
           <SocialSignIn
             src={AppleLogo}
-            altText="Apple Logo"
-            text="Sign in with Apple"
+            altText={SignInText.APPLE.ALT}
+            text={SignInText.APPLE.TEXT}
           />
           <OrBlock>or</OrBlock>
           <MailInput label="E-mail" ref={emailInput} testId="mail-input" />
@@ -42,15 +41,15 @@ const SignIn = () => {
           />
           <FlexBlock>
             <p>
-              Not a member?{" "}
+              {SignInText.NOT_A_MEMBER}{" "}
               <a>
-                <u>Sign up now</u>
+                <u>{SignInText.SIGN_UP_NOW}</u>
               </a>
             </p>
-            <p>Forgot password?</p>
+            <p>{SignInText.FORGOT_PASSWORD}</p>
           </FlexBlock>
           <LogInBtn type="submit" data-cy="submit-login">
-            Log In
+            {SignInText.LOG_IN}
           </LogInBtn>
         </Form>
       </Wrapper>

@@ -25,7 +25,6 @@ import {
 } from "./Calendar.styles";
 import { GlobalStore } from "../../store/storeTypes";
 
-
 type CalendarProps = {
   className: string;
   userId: string;

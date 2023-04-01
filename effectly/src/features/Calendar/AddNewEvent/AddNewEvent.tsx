@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { toggleAddNewEventModal } from "../../../store/calendar/calendarSlice";
-import { Modal } from "./AddNewEvents.styles";
+import { Modal, Form, Label, Input } from "./AddNewEvents.styles";
 
 type PropTypes = {
   isOpened: boolean;
@@ -13,7 +13,10 @@ const AddNewEvent = ({ isOpened }: PropTypes) => {
 
   return (
     <Modal isOpened={isOpened}>
-      <p>Hello</p>
+      <Form>
+        <Label htmlFor="event-name">Event:</Label>
+        <Input type="text" id="event-name" name="event-name" />
+      </Form>
       <button onClick={handleClose}>Close me</button>
     </Modal>
   );
