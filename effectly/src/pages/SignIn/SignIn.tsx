@@ -7,11 +7,11 @@ import {
   LogInBtn,
 } from "./SignIn.styles";
 import useSignIn from "../../hooks/SignIn/useSignIn/useSignIn";
-import SocialSignIn from "../../components/SignIn/SocialSignIn";
+import SocialSignIn from "../../features/SignIn/SocialSignIn";
 import GoogleBtnLight from "../../assets/icons/GoogleBtnLight.svg";
 import AppleLogo from "../../assets/icons/AppleLogo.svg";
-import MailInput from "../../components/SignIn/Inputs/MailInput";
-import PasswordInput from "../../components/SignIn/Inputs/PasswordInput";
+import MailInput from "../../features/SignIn/Inputs/MailInput";
+import PasswordInput from "../../features/SignIn/Inputs/PasswordInput";
 import { Globals, SignIn as SignInText } from "../../core/variables/variables";
 
 const SignIn = () => {

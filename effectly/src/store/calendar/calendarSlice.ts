@@ -18,15 +18,15 @@ export const calendarSlice = createSlice({
     },
     addNewEvent: (state, action) => {
       const { name, startDate, endDate, isAllDay, category } = action.payload;
-      state.newEventInput.name = name;
-      state.newEventInput.startDate = startDate;
-      state.newEventInput.endDate = endDate;
-      state.newEventInput.isAllDay = isAllDay;
-      state.newEventInput.category = category;
+      state.newEventInput.name = name || "";
+      state.newEventInput.startDate = startDate || "";
+      state.newEventInput.endDate = endDate || "";
+      state.newEventInput.isAllDay = isAllDay || "";
+      state.newEventInput.category = category || "";
     },
   },
 });
 
-export const { toggleAddNewEventModal } = calendarSlice.actions;
+export const { toggleAddNewEventModal, addNewEvent } = calendarSlice.actions;
 
 export default calendarSlice.reducer;

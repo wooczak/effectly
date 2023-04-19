@@ -11,6 +11,7 @@ export const Globals: StringVariables = {
 export const Calendar: StringVariables = {
   NO_EVENTS_ADDED: "Oops. No events added yet!",
   TODAY: "Today, ",
+  EVENT_NAME_LABEL: "Event:",
 };
 
 export const SignIn = {
