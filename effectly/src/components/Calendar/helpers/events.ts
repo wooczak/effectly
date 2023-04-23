@@ -1,8 +1,5 @@
-import { useCallback, useMemo } from "react";
-
 import {
   fromUnixTime,
-  isSameDay,
   intervalToDuration,
   set,
   hoursToMinutes,
@@ -72,11 +69,4 @@ export const getEventsMath = (
 
 export const areEventsFetched = (events: any[]) => {
   return events && events?.length !== 0;
-};
-
-export const returnToLocaleDateString = (day: Date) => {
-  return day?.toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "short",
-  });
 };

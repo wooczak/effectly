@@ -4,5 +4,12 @@ export interface GlobalStore {
   };
   calendar: {
     isAddNewEventModalOpened: boolean;
+    newEventInput: {
+      name: string;
+      startDate: number;
+      endDate: number;
+      isAllDay: boolean;
+      category: string;
+    };
   };
 }

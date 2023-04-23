@@ -1,5 +1,6 @@
 import { addDays, getDay } from "date-fns";
 import { useState } from "react";
+import { returnToLocaleDateString } from "./helpers";
 
 enum Days {
   Sunday,
@@ -18,8 +19,9 @@ const useDatePick = () => {
   const decrementDay = () => setCalendarDay(addDays(calendarDay, -1));
 
   const weekDayString = Days[getDay(calendarDay)];
+  const dayString = returnToLocaleDateString(calendarDay);
 
-  return { calendarDay, weekDayString, incrementDay, decrementDay };
+  return { calendarDay, dayString, weekDayString, incrementDay, decrementDay };
 };
 
 export default useDatePick;

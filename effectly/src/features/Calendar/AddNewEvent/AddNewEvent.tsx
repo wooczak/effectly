@@ -1,23 +1,49 @@
+import React from "react";
 import useNewEvent from "../../../hooks/Calendar/useNewEvent/useNewEvent";
 
 import { Calendar } from "../../../core/variables/variables";
-import { Modal, Form, Label, Input, SubmitBtn } from "./AddNewEvents.styles";
+import {
+  Modal,
+  Form,
+  Label,
+  Input,
+  SubmitBtn,
+  Close,
+} from "./AddNewEvent.styles";
 
 type PropTypes = {
   isOpened: boolean;
 };
 
 const AddNewEvent = ({ isOpened }: PropTypes) => {
-  const { handleClose, handleSubmit, eventName } = useNewEvent();
+  const {
+    handleClose,
+    handleSubmit,
+    handleAllDayClick,
+    // handleCategoryClick,
+    Props,
+  } = useNewEvent();
 
   return (
     <Modal isOpened={isOpened}>
+      <Close onClick={() => handleClose}>X</Close>
       <Form onSubmit={handleSubmit}>
-        <Label htmlFor="event-name">{Calendar.EVENT_NAME_LABEL}</Label>
-        <Input type="text" id="event-name" name="event-name" ref={eventName} />
-        <SubmitBtn type="submit" />
+        <Label {...Props.Label.EventName}>{Calendar.EVENT_NAME_LABEL}</Label>
+        <Input {...Props.Input.EventName} />
+
+        <Label {...Props.Label.AllDay}>{Calendar.ALL_DAY_LABEL}</Label>
+        <Input {...Props.Input.AllDay} />
+
+        <Label {...Props.Label.StartTime}>{Calendar.START_TIME_LABEL}</Label>
+        <Input {...Props.Input.StartTime} />
+        <Input {...Props.Input.StartDate} />
+
+        <Label {...Props.Label.EndTime}>{Calendar.END_TIME_LABEL}</Label>
+        <Input {...Props.Input.EndTime} />
+        <Input {...Props.Input.EndDate} />
+
+        <SubmitBtn type="submit">{Calendar.DONE}</SubmitBtn>
       </Form>
-      <button onClick={handleClose}>Close me</button>
     </Modal>
   );
 };
