@@ -11,6 +11,10 @@ export const Close = styled.button`
   font-size: 1rem;
   margin-left: auto;
   margin-bottom: -0.5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const Modal = styled.div<ModalProps>`
@@ -85,7 +89,7 @@ export const Input = styled.input`
     position: relative;
 
     &::before {
-      content: 'OK';
+      content: "OK";
       font-size: 10px;
       position: absolute;
       top: 50%;
@@ -110,6 +114,10 @@ export const SubmitBtn = styled.button`
   font-weight: 500;
   font-size: 1rem;
   background-color: ${(props) => props.theme.darkPurple};
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const FlexBlock = styled.div`

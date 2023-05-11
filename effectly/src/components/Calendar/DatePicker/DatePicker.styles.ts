@@ -10,6 +10,7 @@ export const DatePickerWrapper = styled.div`
   font-size: 1.6rem;
   font-weight: 500;
   font-family: 'Clash Display', sans-serif;
+  text-align: center;
 `;
 
 export const Arrow = styled.img`

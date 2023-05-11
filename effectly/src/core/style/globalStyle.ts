@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
         color: ${(props) => props.theme.text};
     };
 
-    h1 { font-size: 3rem; font-family: 'Clash Display', sans-serif; }
+    h1 { font-size: 3rem; font-family: 'Clash Grotesk', sans-serif; }
     h2 { font-size: 2rem; }
     h3 { font-size: 1.3rem; }
     p { font-size: 1rem; }

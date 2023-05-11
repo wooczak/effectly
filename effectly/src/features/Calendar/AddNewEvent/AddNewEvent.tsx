@@ -10,6 +10,7 @@ import {
   Close,
   FlexBlock,
 } from "./AddNewEvent.styles";
+import AddCategory from "./AddCategory";
 
 type PropTypes = {
   isOpened: boolean;
@@ -19,7 +20,6 @@ const AddNewEvent = ({ isOpened }: PropTypes) => {
   const {
     handleClose,
     handleSubmit,
-    // handleCategoryClick,
     Props: { Label: LabelProps, Input: InputProps },
     isAllDay: isAllDayClicked,
   } = useNewEvent();
@@ -48,6 +48,7 @@ const AddNewEvent = ({ isOpened }: PropTypes) => {
           <Input {...InputProps.EndDate} />
         </FlexBlock>
 
+        <AddCategory />
         <SubmitBtn type="submit">{Calendar.DONE}</SubmitBtn>
       </Form>
     </Modal>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const AppGrid = styled.section`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(7, 1fr);
+  grid-template-rows: repeat(10, 1fr);
   gap: 1rem;
   padding: 3vh 3vw;
   grid-auto-flow: row;
@@ -12,9 +12,11 @@ export const AppGrid = styled.section`
     "calendar calendar mail mail mail mail mail"
     "calendar calendar mail mail mail mail mail"
     "calendar calendar mail mail mail mail mail"
+    "calendar calendar mail mail mail mail mail"
+    "calendar calendar mail mail mail mail mail"
     "calendar calendar todo todo notes notes notes"
     "calendar calendar todo todo notes notes notes"
-    "calendar calendar todo todo timer timer timer";
+    "calendar calendar todo todo timer timer timer"
     "calendar calendar todo todo timer timer timer";
   height: 100vh;
   min-width: 100vw;
@@ -26,7 +28,7 @@ export const AppGrid = styled.section`
   .header {
     grid-area: header;
     width: 100%;
-    height: 70%;
+    height: 75px;
   }
 
   .calendar {

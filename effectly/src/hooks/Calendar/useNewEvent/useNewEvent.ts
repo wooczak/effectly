@@ -8,9 +8,8 @@ import {
   toggleAddNewEventModal,
   toggleAddNewEventModal as toggleModal,
 } from "../../../store/calendar/calendarSlice";
-import {
-  EventDetailsReducerActions as Actions,
-} from "../../../core/variables";
+import { EventDetailsReducerActions as Actions } from "../../../core/variables";
+import { returnFormProps } from "./helpers";
 
 const useNewEvent = () => {
   const updateStore = useDispatch();
@@ -19,7 +18,6 @@ const useNewEvent = () => {
     eventDetailsReducer,
     initialState
   );
-
   const {
     eventStart: startDate,
     eventEnd: endDate,
@@ -31,7 +29,6 @@ const useNewEvent = () => {
 
   const handleClose = () => updateStore(toggleModal());
   const handleAddNewEventBtnClick = () => updateStore(toggleAddNewEventModal());
-
   const handleAllDayClick = () =>
     updateDetails({ type: Actions.TOGGLE_IS_ALL_DAY });
   const handleCategoryClick = (category: string) =>
@@ -53,58 +50,10 @@ const useNewEvent = () => {
     handleClose();
   };
 
-  const Props = {
-    Label: {
-      EventName: {
-        htmlFor: "event-name",
-      },
-      AllDay: {
-        htmlFor: "all-day",
-        onClick: handleAllDayClick,
-        id: "all-day-label"
-      },
-      StartTime: {
-        htmlFor: "start-time",
-      },
-      EndTime: {
-        htmlFor: "end-time",
-      },
-    },
-    Input: {
-      EventName: {
-        type: "text",
-        id: "event-name",
-        name: "event-name",
-        ref: eventNameRef,
-      },
-      AllDay: {
-        type: "checkbox",
-        id: "all-day",
-        name: "all-day",
-        onClick: handleAllDayClick,
-      },
-      StartTime: {
-        type: "time",
-        id: "start-time",
-        name: "start-time",
-      },
-      StartDate: {
-        type: "date",
-        id: "start-date",
-        name: "start-date",
-      },
-      EndTime: {
-        type: "time",
-        id: "end-time",
-        name: "end-time",
-      },
-      EndDate: {
-        type: "date",
-        id: "end-date",
-        name: "end-date",
-      },
-    },
-  };
+  const Props = returnFormProps({
+    handleAllDayClick,
+    eventNameRef,
+  });
 
   return {
     handleClose,
@@ -112,7 +61,7 @@ const useNewEvent = () => {
     handleCategoryClick,
     handleAddNewEventBtnClick,
     Props,
-    isAllDay
+    isAllDay,
   };
 };
 
