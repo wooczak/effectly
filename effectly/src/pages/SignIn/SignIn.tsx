@@ -12,7 +12,7 @@ import GoogleBtnLight from "../../assets/icons/GoogleBtnLight.svg";
 import AppleLogo from "../../assets/icons/AppleLogo.svg";
 import MailInput from "../../features/SignIn/Inputs/MailInput";
 import PasswordInput from "../../features/SignIn/Inputs/PasswordInput";
-import { Globals, SignIn as SignInText } from "../../core/variables/variables";
+import { Globals, SignIn as SignInText } from "../../core/variables";
 
 const SignIn = () => {
   const { emailInput, passwordInput, handleEmailFormSubmit } = useSignIn();

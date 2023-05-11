@@ -18,6 +18,12 @@ const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
     h3 { font-size: 1.3rem; }
     p { font-size: 1rem; }
 
+    /* Removes the clock icon from the time input */
+    input[type="time"]::-webkit-clear-button,
+    input[type="time"]::-webkit-inner-spin-button,
+    input[type="time"]::-webkit-calendar-picker-indicator {
+      display: none;
+    }
 `;
 
 export default GlobalStyle;

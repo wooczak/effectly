@@ -5,7 +5,7 @@ export const AppGrid = styled.section`
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(7, 1fr);
   gap: 1rem;
-  padding: 50px 85px;
+  padding: 3vh 3vw;
   grid-auto-flow: row;
   grid-template-areas:
     "header header header header header header header"

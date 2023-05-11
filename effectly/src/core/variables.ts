@@ -26,6 +26,9 @@ export enum EventDetailsReducerActions {
   SET_CATEGORY = "SET_CATEGORY",
 }
 
+export const QueryById = 'QUERY_BY_ID';
+export const QueryByClass = 'QUERY_BY_CLASS'
+
 export const SignIn = {
   GOOGLE: {
     ALT: "Google Logo",

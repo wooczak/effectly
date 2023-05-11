@@ -1,7 +1,6 @@
-import React from "react";
 import useNewEvent from "../../../hooks/Calendar/useNewEvent/useNewEvent";
 
-import { Calendar } from "../../../core/variables/variables";
+import { Calendar } from "../../../core/variables";
 import {
   Modal,
   Form,
@@ -9,6 +8,7 @@ import {
   Input,
   SubmitBtn,
   Close,
+  FlexBlock,
 } from "./AddNewEvent.styles";
 
 type PropTypes = {
@@ -19,28 +19,34 @@ const AddNewEvent = ({ isOpened }: PropTypes) => {
   const {
     handleClose,
     handleSubmit,
-    handleAllDayClick,
     // handleCategoryClick,
-    Props,
+    Props: { Label: LabelProps, Input: InputProps },
+    isAllDay: isAllDayClicked,
   } = useNewEvent();
 
   return (
     <Modal isOpened={isOpened}>
-      <Close onClick={() => handleClose}>X</Close>
+      <Close onClick={handleClose}>X</Close>
       <Form onSubmit={handleSubmit}>
-        <Label {...Props.Label.EventName}>{Calendar.EVENT_NAME_LABEL}</Label>
-        <Input {...Props.Input.EventName} />
+        <Label {...LabelProps.EventName}>{Calendar.EVENT_NAME_LABEL}</Label>
+        <Input {...InputProps.EventName} />
 
-        <Label {...Props.Label.AllDay}>{Calendar.ALL_DAY_LABEL}</Label>
-        <Input {...Props.Input.AllDay} />
+        <FlexBlock>
+          <Label {...LabelProps.AllDay}>{Calendar.ALL_DAY_LABEL}</Label>
+          <Input {...InputProps.AllDay} />
+        </FlexBlock>
 
-        <Label {...Props.Label.StartTime}>{Calendar.START_TIME_LABEL}</Label>
-        <Input {...Props.Input.StartTime} />
-        <Input {...Props.Input.StartDate} />
+        <Label {...LabelProps.StartTime}>{Calendar.START_TIME_LABEL}</Label>
+        <FlexBlock>
+          {!isAllDayClicked && <Input {...InputProps.StartTime} />}
+          <Input {...InputProps.StartDate} />
+        </FlexBlock>
 
-        <Label {...Props.Label.EndTime}>{Calendar.END_TIME_LABEL}</Label>
-        <Input {...Props.Input.EndTime} />
-        <Input {...Props.Input.EndDate} />
+        <Label {...LabelProps.EndTime}>{Calendar.END_TIME_LABEL}</Label>
+        <FlexBlock>
+          {!isAllDayClicked && <Input {...InputProps.EndTime} />}
+          <Input {...InputProps.EndDate} />
+        </FlexBlock>
 
         <SubmitBtn type="submit">{Calendar.DONE}</SubmitBtn>
       </Form>

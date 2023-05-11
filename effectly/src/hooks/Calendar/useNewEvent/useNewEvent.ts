@@ -1,5 +1,6 @@
 import { FormEvent, useReducer, useRef } from "react";
 import { useDispatch } from "react-redux";
+import useProperInputs from "../useProperInputs";
 
 import eventDetailsReducer, { initialState } from "./eventDetailsReducer";
 import {
@@ -7,12 +8,13 @@ import {
   toggleAddNewEventModal,
   toggleAddNewEventModal as toggleModal,
 } from "../../../store/calendar/calendarSlice";
-import { EventDetailsReducerActions as Actions } from "../../../core/variables/variables";
+import {
+  EventDetailsReducerActions as Actions,
+} from "../../../core/variables";
 
 const useNewEvent = () => {
   const updateStore = useDispatch();
   const eventNameRef = useRef<HTMLInputElement>(null);
-
   const [eventDetails, updateDetails] = useReducer(
     eventDetailsReducer,
     initialState
@@ -25,6 +27,7 @@ const useNewEvent = () => {
     category,
   } = eventDetails;
   const name = eventNameRef.current?.value;
+  useProperInputs(isAllDay);
 
   const handleClose = () => updateStore(toggleModal());
   const handleAddNewEventBtnClick = () => updateStore(toggleAddNewEventModal());
@@ -46,6 +49,8 @@ const useNewEvent = () => {
         category,
       })
     );
+
+    handleClose();
   };
 
   const Props = {
@@ -55,6 +60,8 @@ const useNewEvent = () => {
       },
       AllDay: {
         htmlFor: "all-day",
+        onClick: handleAllDayClick,
+        id: "all-day-label"
       },
       StartTime: {
         htmlFor: "start-time",
@@ -102,11 +109,10 @@ const useNewEvent = () => {
   return {
     handleClose,
     handleSubmit,
-    eventNameRef,
-    handleAllDayClick,
     handleCategoryClick,
     handleAddNewEventBtnClick,
     Props,
+    isAllDay
   };
 };
 

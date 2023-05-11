@@ -16,7 +16,7 @@ import { areEventsFetched } from "./helpers/events";
 import {
   Calendar as CalendarVars,
   Globals,
-} from "../../core/variables/variables";
+} from "../../core/variables";
 import { GlobalStore } from "../../store/storeTypes";
 
 import {

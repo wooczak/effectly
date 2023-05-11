@@ -2,7 +2,7 @@ import { Arrow, DatePickerWrapper } from "./DatePicker.styles";
 
 import ArrowLeftIcon from "../../../assets/icons/ArrowLeft.svg";
 import ArrowRightIcon from "../../../assets/icons/ArrowRight.svg";
-import { Calendar } from "../../../core/variables/variables";
+import { Calendar } from "../../../core/variables";
 
 interface DatePickerTypes {
   dayString: string;

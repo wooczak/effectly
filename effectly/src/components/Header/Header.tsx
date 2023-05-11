@@ -1,6 +1,6 @@
 import { HeaderWrapper, Logo, LogOutBtn } from "./Header.styles";
 import { auth } from "../../core/firebase/firebase";
-import { Globals } from "../../core/variables/variables";
+import { Globals } from "../../core/variables";
 
 interface HeaderProps {
   className: string;

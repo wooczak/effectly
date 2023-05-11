@@ -8,8 +8,9 @@ type ModalProps = {
 export const Close = styled.button`
   background-color: inherit;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-left: auto;
+  margin-bottom: -0.5rem;
 `;
 
 export const Modal = styled.div<ModalProps>`
@@ -19,8 +20,6 @@ export const Modal = styled.div<ModalProps>`
   border: 1px solid ${(props) => props.theme.accent};
   border-radius: 10px;
   position: absolute;
-  width: 80%;
-  height: 80%;
   margin: 1rem;
   padding: 1.5rem;
   animation: ${(props) =>
@@ -40,7 +39,7 @@ export const Modal = styled.div<ModalProps>`
 
 export const Form = styled.form`
   font-size: 1rem;
-  background-color: inherit;
+  background-color: transparent;
   flex: 1;
 
   .form-control {
@@ -50,6 +49,10 @@ export const Form = styled.form`
     border-radius: 10px;
     width: 100%;
     height: 3rem;
+  }
+
+  #all-day-label {
+    margin-bottom: 0;
   }
 `;
 
@@ -64,9 +67,37 @@ export const Input = styled.input`
   outline: none;
   border: 1px solid ${(props) => props.theme.darkPurple};
   border-radius: 10px;
-  width: 100%;
-  height: 3rem;
+  width: auto;
+  height: auto;
   padding: 0.5em;
+
+  &[type="text"] {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 1rem;
+  }
+
+  &[type="checkbox"] {
+    height: 25px;
+    aspect-ratio: 1 / 1;
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+
+    &::before {
+      content: 'OK';
+      font-size: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+  }
+
+  &[type="checkbox"]:checked::before {
+    display: block;
+  }
 `;
 
 export const SubmitBtn = styled.button`
@@ -79,4 +110,12 @@ export const SubmitBtn = styled.button`
   font-weight: 500;
   font-size: 1rem;
   background-color: ${(props) => props.theme.darkPurple};
+`;
+
+export const FlexBlock = styled.div`
+  display: flex;
+  background-color: transparent;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  align-items: center;
 `;

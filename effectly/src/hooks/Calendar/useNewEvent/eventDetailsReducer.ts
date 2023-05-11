@@ -1,4 +1,4 @@
-import { EventDetailsReducerActions as Actions } from "../../../core/variables/variables";
+import { EventDetailsReducerActions as Actions } from "../../../core/variables";
 
 interface State {
   isAllDay: boolean;
