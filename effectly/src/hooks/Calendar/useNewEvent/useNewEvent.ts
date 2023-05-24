@@ -1,4 +1,4 @@
-import { FormEvent, useReducer, useRef } from "react";
+import { FormEvent, useReducer, useState } from "react";
 import { useDispatch } from "react-redux";
 import useProperInputs from "../useProperInputs";
 
@@ -13,7 +13,7 @@ import { returnFormProps } from "./helpers";
 
 const useNewEvent = () => {
   const updateStore = useDispatch();
-  const eventNameRef = useRef<HTMLInputElement>(null);
+  const [eventName, setEventName] = useState("");
   const [eventDetails, updateDetails] = useReducer(
     eventDetailsReducer,
     initialState
@@ -24,7 +24,6 @@ const useNewEvent = () => {
     isAllDay,
     category,
   } = eventDetails;
-  const name = eventNameRef.current?.value;
   useProperInputs(isAllDay);
 
   const handleClose = () => updateStore(toggleModal());
@@ -39,7 +38,7 @@ const useNewEvent = () => {
 
     updateStore(
       addNewEvent({
-        name,
+        eventName,
         startDate,
         endDate,
         isAllDay,
@@ -52,7 +51,7 @@ const useNewEvent = () => {
 
   const Props = returnFormProps({
     handleAllDayClick,
-    eventNameRef,
+    setEventName
   });
 
   return {

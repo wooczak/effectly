@@ -9,6 +9,7 @@ import {
   SubmitBtn,
   Close,
   FlexBlock,
+  Wrapper
 } from "./AddNewEvent.styles";
 import AddCategory from "./AddCategory";
 
@@ -26,31 +27,33 @@ const AddNewEvent = ({ isOpened }: PropTypes) => {
 
   return (
     <Modal isOpened={isOpened}>
-      <Close onClick={handleClose}>X</Close>
-      <Form onSubmit={handleSubmit}>
-        <Label {...LabelProps.EventName}>{Calendar.EVENT_NAME_LABEL}</Label>
-        <Input {...InputProps.EventName} />
+      <Wrapper>
+        <Close onClick={handleClose}>X</Close>
+        <Form onSubmit={handleSubmit}>
+          <Label {...LabelProps.EventName}>{Calendar.EVENT_NAME_LABEL}</Label>
+          <Input {...InputProps.EventName} />
 
-        <FlexBlock>
-          <Label {...LabelProps.AllDay}>{Calendar.ALL_DAY_LABEL}</Label>
-          <Input {...InputProps.AllDay} />
-        </FlexBlock>
+          <FlexBlock>
+            <Label {...LabelProps.AllDay}>{Calendar.ALL_DAY_LABEL}</Label>
+            <Input {...InputProps.AllDay} />
+          </FlexBlock>
 
-        <Label {...LabelProps.StartTime}>{Calendar.START_TIME_LABEL}</Label>
-        <FlexBlock>
-          {!isAllDayClicked && <Input {...InputProps.StartTime} />}
-          <Input {...InputProps.StartDate} />
-        </FlexBlock>
+          <Label {...LabelProps.StartTime}>{Calendar.START_TIME_LABEL}</Label>
+          <FlexBlock>
+            {!isAllDayClicked && <Input {...InputProps.StartTime} />}
+            <Input {...InputProps.StartDate} />
+          </FlexBlock>
 
-        <Label {...LabelProps.EndTime}>{Calendar.END_TIME_LABEL}</Label>
-        <FlexBlock>
-          {!isAllDayClicked && <Input {...InputProps.EndTime} />}
-          <Input {...InputProps.EndDate} />
-        </FlexBlock>
+          <Label {...LabelProps.EndTime}>{Calendar.END_TIME_LABEL}</Label>
+          <FlexBlock>
+            {!isAllDayClicked && <Input {...InputProps.EndTime} />}
+            <Input {...InputProps.EndDate} />
+          </FlexBlock>
 
-        <AddCategory />
-        <SubmitBtn type="submit">{Calendar.DONE}</SubmitBtn>
-      </Form>
+          <AddCategory />
+          <SubmitBtn type="submit">{Calendar.DONE}</SubmitBtn>
+        </Form>
+      </Wrapper>
     </Modal>
   );
 };

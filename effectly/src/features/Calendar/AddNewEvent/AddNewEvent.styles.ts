@@ -19,12 +19,13 @@ export const Close = styled.button`
 
 export const Modal = styled.div<ModalProps>`
   display: flex;
-  flex-direction: column;
-  background-color: ${(props) => props.theme.bgSecondary};
-  border: 1px solid ${(props) => props.theme.accent};
-  border-radius: 10px;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
-  margin: 1rem;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
   padding: 1.5rem;
   animation: ${(props) =>
     props.isOpened
@@ -39,6 +40,16 @@ export const Modal = styled.div<ModalProps>`
     text-align: center;
     background-color: transparent;
   }
+`;
+
+export const Wrapper = styled.div`
+  display: block;
+  background-color: ${(props) => props.theme.bgSecondary};
+  border: 1px solid ${(props) => props.theme.accent};
+  border-radius: 10px;
+  width: 30%;
+  margin-inline: auto;
+  padding: 1.5rem;
 `;
 
 export const Form = styled.form`

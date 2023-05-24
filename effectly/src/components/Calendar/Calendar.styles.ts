@@ -5,7 +5,6 @@ export const CalendarWrapper = styled.article`
   border-radius: 10px;
   border: 1px solid ${(props) => props.theme.darkPurple};
   overflow-y: scroll;
-  position: relative;
 `;
 
 export const EventsWrapper = styled.div`
