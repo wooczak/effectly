@@ -1,8 +1,6 @@
-import { Dispatch, SetStateAction } from "react";
-
 interface FormPropsTypes {
   handleAllDayClick: () => void;
-  setEventName: Dispatch<SetStateAction<string>>
+  handleEventNameInput: (value: string) => void;
 }
 
 export const returnFormProps = (props: FormPropsTypes) => {
@@ -28,7 +26,7 @@ export const returnFormProps = (props: FormPropsTypes) => {
         type: "text",
         id: "event-name",
         name: "event-name",
-        onChange: (e: { target: { value: any; }; }) => props?.setEventName(e.target.value)
+        onChange: (e: { target: { value: any; }; }) => props?.handleEventNameInput(e.target.value)
       },
       AllDay: {
         type: "checkbox",

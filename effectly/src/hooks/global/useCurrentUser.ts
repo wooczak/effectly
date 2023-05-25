@@ -5,7 +5,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 
 import { login, logout } from "../../store/users/userSlice";
-import { GlobalStore } from "../../store/storeTypes";
 
 const useCurrentUser = () => {
   const navigate = useNavigate();

@@ -1,14 +1,14 @@
 import { TypeOfQuery } from "./types";
-import { QueryByClass, QueryById} from "./variables";
+import { CLASS, ID } from "./variables";
 
 export const querySelectorBy = (type: TypeOfQuery, query: string) => {
   let returnedSelector: Element | null;
 
   switch (type) {
-    case QueryById:
+    case ID:
       returnedSelector = document.querySelector(`#${query}`);
       break;
-    case QueryByClass:
+    case CLASS:
       returnedSelector = document.querySelector(`.${query}`);
       break;
     default:

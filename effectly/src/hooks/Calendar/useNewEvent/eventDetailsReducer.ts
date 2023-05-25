@@ -1,6 +1,7 @@
 import { EventDetailsReducerActions as Actions } from "../../../core/variables";
 
 interface State {
+  eventName: string;
   isAllDay: boolean;
   eventStart: Date;
   eventEnd: Date;
@@ -8,12 +9,14 @@ interface State {
 }
 
 type Action =
+  | { type: typeof Actions.SET_EVENT_NAME; payload: string }
   | { type: typeof Actions.TOGGLE_IS_ALL_DAY; payload?: boolean }
   | { type: typeof Actions.SET_EVENT_START; payload: Date }
   | { type: typeof Actions.SET_EVENT_END; payload: Date }
   | { type: typeof Actions.SET_CATEGORY; payload: string };
 
 export const initialState: State = {
+  eventName: "",
   isAllDay: false,
   eventStart: new Date(),
   eventEnd: new Date(),
@@ -24,6 +27,8 @@ const eventDetailsReducer = (state: State, action: Action): State => {
   const { type, payload } = action;
 
   switch (type) {
+    case Actions.SET_EVENT_NAME:
+      return { ...state, eventName: payload }
     case Actions.TOGGLE_IS_ALL_DAY:
       return { ...state, isAllDay: !state.isAllDay };
     case Actions.SET_EVENT_START:

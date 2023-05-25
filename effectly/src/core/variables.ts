@@ -24,10 +24,11 @@ export enum EventDetailsReducerActions {
   SET_EVENT_START = "SET_EVENT_START",
   SET_EVENT_END = "SET_EVENT_END",
   SET_CATEGORY = "SET_CATEGORY",
+  SET_EVENT_NAME = "SET_EVENT_NAME",
 }
 
-export const QueryById = 'QUERY_BY_ID';
-export const QueryByClass = 'QUERY_BY_CLASS'
+export const ID = 'ID';
+export const CLASS = 'CLASS'
 
 export const SignIn = {
   GOOGLE: {

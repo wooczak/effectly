@@ -1,4 +1,4 @@
-export interface GlobalStore {
+interface GlobalStore {
   user: {
     user: any | null;
   };

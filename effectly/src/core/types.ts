@@ -1,6 +1,6 @@
-import { QueryByClass, QueryById } from "./variables";
+import { ID, CLASS } from "./variables";
 
-type QueryById = typeof QueryById;
-type QueryByClass = typeof QueryByClass;
+type QueryById = typeof ID;
+type QueryByClass = typeof CLASS;
 
 export type TypeOfQuery = QueryById | QueryByClass;

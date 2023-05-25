@@ -17,7 +17,6 @@ import {
   Calendar as CalendarVars,
   Globals,
 } from "../../core/variables";
-import { GlobalStore } from "../../store/storeTypes";
 
 import {
   CalendarWrapper,

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getDocs, query } from "firebase/firestore";
+import { getDocs } from "firebase/firestore";
 import { queryCalendarData } from "../../core/firebase/queries";
 
 const useCalendarData = (userId: string) => {
