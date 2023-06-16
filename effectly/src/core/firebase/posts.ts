@@ -1,4 +1,4 @@
-import { Timestamp, addDoc } from "firebase/firestore";
+import { addDoc } from "firebase/firestore";
 import { queryCalendarData } from "./queries";
 
 type DataToPush = {
@@ -12,9 +12,11 @@ export const pushCalendarEventToDB = async (
   userId: string,
   data: DataToPush
 ) => {
-  const doc = await addDoc(queryCalendarData(userId), {
-    ...data,
-  });
-  console.log(userId);
-  console.log(doc);
+  try {
+    await addDoc(queryCalendarData(userId), {
+      ...data,
+    });
+  } catch (error) {
+    console.error(error);
+  }
 };

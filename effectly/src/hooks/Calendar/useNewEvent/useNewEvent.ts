@@ -10,7 +10,7 @@ import {
   toggleAddNewEventModal as toggleModal,
 } from "../../../store/calendar/calendarSlice";
 import { EventDetailsReducerActions as Actions } from "../../../core/variables";
-import { returnFormProps } from "./helpers";
+import { formatToDate, returnFormProps } from "./helpers";
 import { pushCalendarEventToDB } from "../../../core/firebase/posts";
 
 const useNewEvent = () => {
@@ -22,8 +22,10 @@ const useNewEvent = () => {
   );
   const {
     eventName,
-    eventStart: startDate,
-    eventEnd: endDate,
+    eventTimeStart,
+    eventTimeEnd,
+    eventDateStart,
+    eventDateEnd,
     isAllDay,
   } = eventDetails;
   useProperInputs(isAllDay);
@@ -42,8 +44,14 @@ const useNewEvent = () => {
 
     pushCalendarEventToDB(currentUser?.uid, {
       event_name: eventName,
-      event_start: startDate,
-      event_end: endDate,
+      event_start: formatToDate(
+        eventTimeStart!.current?.value,
+        eventDateStart!.current?.value
+      ),
+      event_end: formatToDate(
+        eventTimeEnd!.current?.value,
+        eventDateEnd!.current?.value
+      ),
     });
 
     handleClose();
@@ -52,6 +60,10 @@ const useNewEvent = () => {
   const Props = returnFormProps({
     handleAllDayClick,
     handleEventNameInput,
+    eventTimeStart,
+    eventTimeEnd,
+    eventDateStart,
+    eventDateEnd,
   });
 
   return {

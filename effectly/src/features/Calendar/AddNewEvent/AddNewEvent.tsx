@@ -9,7 +9,7 @@ import {
   SubmitBtn,
   Close,
   FlexBlock,
-  Wrapper
+  Wrapper,
 } from "./AddNewEvent.styles";
 import AddCategory from "./AddCategory";
 
