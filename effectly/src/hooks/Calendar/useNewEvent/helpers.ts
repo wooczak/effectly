@@ -1,13 +1,12 @@
 import { parse, setHours, setMinutes } from "date-fns";
-import { MutableRefObject } from "react";
 
 interface FormPropsTypes {
   handleAllDayClick: () => void;
   handleEventNameInput: (value: string) => void;
-  eventTimeStart: MutableRefObject<{ value: string }>;
-  eventTimeEnd: MutableRefObject<{ value: string }>;
-  eventDateStart: MutableRefObject<{ value: string }>;
-  eventDateEnd: MutableRefObject<{ value: string }>;
+  eventTimeStartRef: React.MutableRefObject<string | undefined>;
+  eventTimeEndRef: React.MutableRefObject<string | undefined>;
+  eventDateStartRef: React.MutableRefObject<string | undefined>;
+  eventDateEndRef: React.MutableRefObject<string | undefined>;
 }
 
 export const returnFormProps = (props: FormPropsTypes) => {
@@ -46,25 +45,25 @@ export const returnFormProps = (props: FormPropsTypes) => {
         type: "time",
         id: "start-time",
         name: "start-time",
-        ref: props?.eventTimeStart,
+        innerRef: props?.eventTimeStartRef,
       },
       StartDate: {
         type: "date",
         id: "start-date",
         name: "start-date",
-        ref: props?.eventDateStart,
+        innerRef: props?.eventDateStartRef,
       },
       EndTime: {
         type: "time",
         id: "end-time",
         name: "end-time",
-        ref: props?.eventTimeEnd,
+        innerRef: props?.eventTimeEndRef,
       },
       EndDate: {
         type: "date",
         id: "end-date",
         name: "end-date",
-        ref: props?.eventDateEnd,
+        innerRef: props?.eventDateEndRef,
       },
     },
   };

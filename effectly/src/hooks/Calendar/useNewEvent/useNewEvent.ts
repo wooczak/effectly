@@ -1,4 +1,4 @@
-import { FormEvent, useReducer } from "react";
+import { FormEvent, useReducer, useRef } from "react";
 import { useDispatch } from "react-redux";
 
 import useProperInputs from "../useProperInputs";
@@ -16,18 +16,15 @@ import { pushCalendarEventToDB } from "../../../core/firebase/posts";
 const useNewEvent = () => {
   const currentUser = useCurrentUser();
   const updateStore = useDispatch();
+  const eventTimeStartRef = useRef<string>();
+  const eventTimeEndRef = useRef<string>();
+  const eventDateStartRef = useRef<string>();
+  const eventDateEndRef = useRef<string>();
   const [eventDetails, updateDetails] = useReducer(
     eventDetailsReducer,
     initialState
   );
-  const {
-    eventName,
-    eventTimeStart,
-    eventTimeEnd,
-    eventDateStart,
-    eventDateEnd,
-    isAllDay,
-  } = eventDetails;
+  const { eventName, isAllDay } = eventDetails;
   useProperInputs(isAllDay);
 
   const handleClose = () => updateStore(toggleModal());
@@ -45,12 +42,12 @@ const useNewEvent = () => {
     pushCalendarEventToDB(currentUser?.uid, {
       event_name: eventName,
       event_start: formatToDate(
-        eventTimeStart!.current?.value,
-        eventDateStart!.current?.value
+        (eventTimeStartRef as React.MutableRefObject<string>).current,
+        (eventDateStartRef as React.MutableRefObject<string>)!.current
       ),
       event_end: formatToDate(
-        eventTimeEnd!.current?.value,
-        eventDateEnd!.current?.value
+        (eventTimeEndRef as React.MutableRefObject<string>).current,
+        (eventDateEndRef as React.MutableRefObject<string>).current
       ),
     });
 
@@ -60,10 +57,10 @@ const useNewEvent = () => {
   const Props = returnFormProps({
     handleAllDayClick,
     handleEventNameInput,
-    eventTimeStart,
-    eventTimeEnd,
-    eventDateStart,
-    eventDateEnd,
+    eventTimeStartRef,
+    eventTimeEndRef,
+    eventDateStartRef,
+    eventDateEndRef,
   });
 
   return {
