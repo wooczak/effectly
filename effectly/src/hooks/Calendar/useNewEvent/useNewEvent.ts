@@ -1,4 +1,4 @@
-import { FormEvent, useReducer, useRef } from "react";
+import { FormEvent, useReducer } from "react";
 import { useDispatch } from "react-redux";
 
 import useProperInputs from "../useProperInputs";
@@ -13,43 +13,48 @@ import { EventDetailsReducerActions as Actions } from "../../../core/variables";
 import { formatToDate, returnFormProps } from "./helpers";
 import { pushCalendarEventToDB } from "../../../core/firebase/posts";
 
+import "react-date-picker/dist/DatePicker.css";
+import "react-calendar/dist/Calendar.css";
+import "react-time-picker/dist/TimePicker.css";
+import "react-clock/dist/Clock.css";
+
 const useNewEvent = () => {
   const currentUser = useCurrentUser();
   const updateStore = useDispatch();
-  const eventTimeStartRef = useRef<string>();
-  const eventTimeEndRef = useRef<string>();
-  const eventDateStartRef = useRef<string>();
-  const eventDateEndRef = useRef<string>();
   const [eventDetails, updateDetails] = useReducer(
     eventDetailsReducer,
     initialState
   );
-  const { eventName, isAllDay } = eventDetails;
-  useProperInputs(isAllDay);
+
+  const {
+    eventName,
+    isAllDay,
+    eventTimeStart,
+    eventTimeEnd,
+    eventDateStart,
+    eventDateEnd,
+  } = eventDetails;
+
+  const handleAction = (type: Actions, payload?: any) => updateDetails({ type, payload }); 
 
   const handleClose = () => updateStore(toggleModal());
   const handleAddNewEventBtnClick = () => updateStore(toggleAddNewEventModal());
-  const handleEventNameInput = (eventName: string) =>
-    updateDetails({ type: Actions.SET_EVENT_NAME, payload: eventName });
-  const handleAllDayClick = () =>
-    updateDetails({ type: Actions.TOGGLE_IS_ALL_DAY });
+  const handleEventNameInput = handleAction(Actions.SET_EVENT_NAME, eventName as string);
+  const handleAllDayClick = handleAction(Actions.TOGGLE_IS_ALL_DAY);
   const handleCategoryClick = (category: string) =>
     updateDetails({ type: Actions.SET_CATEGORY, payload: category });
+  const handleEventTimeStartInput = (eventTimeStart: Date) =>
+    updateDetails({
+      type: Actions.SET_EVENT_TIME_START,
+      payload: eventTimeStart,
+    });
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    pushCalendarEventToDB(currentUser?.uid, {
+    /*     pushCalendarEventToDB(currentUser?.uid, {
       event_name: eventName,
-      event_start: formatToDate(
-        (eventTimeStartRef as React.MutableRefObject<string>).current,
-        (eventDateStartRef as React.MutableRefObject<string>)!.current
-      ),
-      event_end: formatToDate(
-        (eventTimeEndRef as React.MutableRefObject<string>).current,
-        (eventDateEndRef as React.MutableRefObject<string>).current
-      ),
-    });
+    }); */
 
     handleClose();
   };
@@ -57,10 +62,10 @@ const useNewEvent = () => {
   const Props = returnFormProps({
     handleAllDayClick,
     handleEventNameInput,
-    eventTimeStartRef,
-    eventTimeEndRef,
-    eventDateStartRef,
-    eventDateEndRef,
+    eventTimeStart,
+    eventTimeEnd,
+    eventDateStart,
+    eventDateEnd,
   });
 
   return {

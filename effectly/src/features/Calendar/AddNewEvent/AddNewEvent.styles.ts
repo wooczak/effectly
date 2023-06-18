@@ -8,8 +8,8 @@ type ModalProps = {
 export const Close = styled.button`
   background-color: inherit;
   border: none;
-  font-size: 1rem;
-  margin-left: auto;
+  font-size: 1.25rem;
+  margin-left: calc(100% - 0.75rem);
   margin-bottom: -0.5rem;
 
   &:hover {
@@ -47,7 +47,7 @@ export const Wrapper = styled.div`
   background-color: ${(props) => props.theme.bgSecondary};
   border: 1px solid ${(props) => props.theme.accent};
   border-radius: 10px;
-  width: 30%;
+  width: 350px;
   margin-inline: auto;
   padding: 1.5rem;
 `;
@@ -81,7 +81,7 @@ export const Input = styled.input`
   background-color: transparent;
   outline: none;
   border: 1px solid ${(props) => props.theme.darkPurple};
-  border-radius: 10px;
+  border-radius: 2px;
   width: auto;
   height: auto;
   padding: 0.5em;

@@ -1,3 +1,6 @@
+import TimePicker from "react-time-picker";
+import DatePicker from "react-date-picker";
+
 import useNewEvent from "../../../hooks/Calendar/useNewEvent/useNewEvent";
 
 import { Calendar } from "../../../core/variables";
@@ -40,14 +43,14 @@ const AddNewEvent = ({ isOpened }: PropTypes) => {
 
           <Label {...LabelProps.StartTime}>{Calendar.START_TIME_LABEL}</Label>
           <FlexBlock>
-            {!isAllDayClicked && <Input {...InputProps.StartTime} />}
-            <Input {...InputProps.StartDate} />
+            {!isAllDayClicked && <TimePicker {...InputProps.StartTime} />}
+            <DatePicker {...InputProps.StartDate} />
           </FlexBlock>
 
           <Label {...LabelProps.EndTime}>{Calendar.END_TIME_LABEL}</Label>
           <FlexBlock>
-            {!isAllDayClicked && <Input {...InputProps.EndTime} />}
-            <Input {...InputProps.EndDate} />
+            {!isAllDayClicked && <TimePicker {...InputProps.EndTime} />}
+            <DatePicker {...InputProps.EndDate} />
           </FlexBlock>
 
           <AddCategory />

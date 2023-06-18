@@ -3,12 +3,11 @@ import { parse, setHours, setMinutes } from "date-fns";
 interface FormPropsTypes {
   handleAllDayClick: () => void;
   handleEventNameInput: (value: string) => void;
-  eventTimeStartRef: React.MutableRefObject<string | undefined>;
-  eventTimeEndRef: React.MutableRefObject<string | undefined>;
-  eventDateStartRef: React.MutableRefObject<string | undefined>;
-  eventDateEndRef: React.MutableRefObject<string | undefined>;
+  eventTimeStart: Date;
+  eventTimeEnd: Date;
+  eventDateStart: Date;
+  eventDateEnd: Date;
 }
-
 export const returnFormProps = (props: FormPropsTypes) => {
   return {
     Label: {
@@ -42,28 +41,16 @@ export const returnFormProps = (props: FormPropsTypes) => {
         onClick: props?.handleAllDayClick,
       },
       StartTime: {
-        type: "time",
-        id: "start-time",
-        name: "start-time",
-        innerRef: props?.eventTimeStartRef,
+        value: props?.eventTimeStart,
       },
       StartDate: {
-        type: "date",
-        id: "start-date",
-        name: "start-date",
-        innerRef: props?.eventDateStartRef,
+        value: props?.eventDateStart,
       },
       EndTime: {
-        type: "time",
-        id: "end-time",
-        name: "end-time",
-        innerRef: props?.eventTimeEndRef,
+        value: props?.eventTimeEnd,
       },
       EndDate: {
-        type: "date",
-        id: "end-date",
-        name: "end-date",
-        innerRef: props?.eventDateEndRef,
+        value: props?.eventDateEnd,
       },
     },
   };
@@ -74,7 +61,6 @@ export const formatToDate = (time: string, date: string) => {
   const [hours, minutes] = time.split(":").map(Number);
 
   const resultDate = setMinutes(setHours(parsedDate, hours), minutes);
-  console.log(resultDate);
 
   return resultDate;
 };
